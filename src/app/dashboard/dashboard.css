@@ -1,0 +1,47 @@
+.dashboard-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  scroll-margin-top: 0;
+}
+
+.section-container {
+  /* border: 1px solid; */
+  padding: 0.5rem;
+  width: 650px;
+  gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  border: 1px solid;
+  height: 2.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto {
+  border: 1px solid;
+  height: 150px;
+}
+
+.intro {
+  border: 1px solid;
+  height: 250px;
+}
+
+@media (max-width: 500px) {
+  .section-container {
+    width: 300px;
+  }
+
+  .foto {
+    height: 120px;
+  }
+}

@@ -1,0 +1,12 @@
+<nav class="dots" aria-label="Page sections">
+    @for (section of sections; track $index) {
+    <button
+        type="button"
+        class="dot"
+        [class.active]="activeSection() === section.id"
+        [attr.aria-label]="section.label"
+        (click)="scrollTo(section.id)"
+    >
+    </button>
+    }
+</nav>
