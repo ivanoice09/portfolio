@@ -5,11 +5,10 @@ html {
 
 body {
   /* Font from google */
-  font-family: 'Google Sans Code', monospace;
+  font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-variation-settings: 'MONO' 1;
 }
 
 /* So that inputs and other elements inherit the body's font */
