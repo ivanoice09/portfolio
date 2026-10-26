@@ -6,8 +6,42 @@
 
 .dashboard-section {
   display: grid;
-  grid-template-columns: 260px auto;
   column-gap: 1.5rem;
+  row-gap: 1.5rem;
+  grid-template-columns: 260px auto;
+}
+
+.col-2 {
+  min-height: 100vh;
+  width: 800px;
+  gap: 12px;
+  padding: 0 0 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  border-left: 0.2rem solid #d7d7d7;
+  justify-content: center;
+}
+
+.section-title {
+  height: 2.8rem;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+/* ================ */
+/* ABOUT ME SECTION */
+/* ================ */
+
+.photo-container {
+  display: flex;
+  align-items: center;
+  height: auto;
 }
 
 .photo-frame {
@@ -29,43 +63,103 @@
   object-position: 50% -20px;
 }
 
-.section-container {
-  min-height: 100vh;
-  padding: 0.5rem;
-  width: 800px;
-  gap: 12px;
-
-  display: flex;
-  flex-direction: column;
-  border-left: 0.2rem solid #d7d7d7;
-  justify-content: center;
-}
-
-.section-title {
-  height: 2.8rem;
-  font-size: 3.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  margin-left: 30px;
-
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
 .intro {
   text-align: left;
   font-weight: 500;
   font-size: 1.7rem;
   width: 400px;
-  margin-left: 30px;
 }
 
 p {
   margin-top: 0;
 }
 
+/* =============== */
+/* PROJECT SECTION */
+/* =============== */
 
+.project-section {
+  grid-template-rows: auto 650px;
+}
+
+.project-number-container {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.project-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  width: 200px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.project-numbers div {
+  font-size: 180px;
+  font-weight: 700;
+}
+
+.projects-container {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.project-list-frame
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  gap: 30px;
+  height: 430px;
+
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-padding: 5px 0 0 0;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 48px,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.project-card {
+  display: flex;
+  min-height: 400px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: bisque;
+  box-shadow: 0 4px 5px rgba(147, 147, 147, 0.18);
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.project-title-container {
+  height: 100%;
+}
+
+.project-titles {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+
+  width: auto;
+  height: 80px;
+  overflow-y: auto;
+}
+
+.project-titles div {
+  font-size: 30px;
+  font-weight: 600;
+}
 
 /* Laptops */
 @media (max-width: 1300px) {
