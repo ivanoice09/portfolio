@@ -19,11 +19,13 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  margin-left: 4.5rem;
 }
 
 .intro-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 55px;
 }
 
 .intro {
@@ -71,10 +73,15 @@ p {
 }
 
 .project-title {
-  width: 100%;
-  margin: 20px 0 20px 145px;
+  width: 650px;
   font-size: 24px;
   font-weight: 500;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background-color: var(--surface);
+  padding: 10px 0;
+  box-shadow: 3px 3px 3px rgba(82, 82, 82, 0.295);
+  text-align: center;
 }
 
 .project-container {
@@ -92,7 +99,7 @@ p {
   padding: 20px 0;
   width: 90%;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   gap: 30px;
 }
 
@@ -131,11 +138,11 @@ p {
 }
 
 .version-select-wrapper {
-  display: flex;
+  display: inline-flex;
   margin-top: 10px;
   width: 60%;
   height: 40px;
-  border-radius: 10px;
+  position: relative;
 }
 
 .btn-redirect-modal {
@@ -170,7 +177,46 @@ p {
   background-color: var(--primary-soft);
 }
 
-/* MODAL SETTINGS */
+/* ============================================= */
+/*           VERSION DROPDOWN SETTINGS           */
+/* ============================================= */
+
+.version-dropdown {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.version-dropdown-item {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.version-dropdown-item.active {
+  background: #e6f0ff;
+  font-weight: 600;
+}
+
+.version-dropdown-item:hover {
+  background: #f2f2f2;
+}
+
+/* ====================================== */
+/*            MODAL SETTINGS              */
+/* ====================================== */
 
 .modal-backdrop {
   position: fixed;

@@ -1,5 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, signal } from '@angular/core';
 import { Sidenav } from '../sidenav/sidenav';
+
+interface AppVersion {
+  label: string;
+  url: string;
+  active: boolean;
+}
 
 @Component({
   imports: [Sidenav],
@@ -11,12 +17,19 @@ import { Sidenav } from '../sidenav/sidenav';
 })
 export class Dashboard {
 
-  readonly activeTab = signal<'description' | 'docs' | 'preview'>('description');
+  readonly activeTab = signal<'description' | 'details' | 'tech-stack'>('description');
   readonly disabled = signal(true);
   isRedirectModalOpen = signal(false);
+
   isDropdownOpen = false;
 
-  siteUrl = 'https://google.com';
+  versions: AppVersion[] = [
+    { label: 'modern-ui', url: 'https://modernswiftshifter.netlify.app', active: true },
+    { label: 'traditional', url: 'https://swiftshifter.netlify.app', active: false },
+  ];
+
+  siteUrl = this.versions[0].url;
+  selectedVersion = this.versions[0];
 
   sections = [
     { id: 'about', label: 'About' },
@@ -24,7 +37,7 @@ export class Dashboard {
     { id: 'contacts', label: 'Contacts' },
   ];
 
-  setTab(tab: 'description' | 'docs' | 'preview') {
+  setTab(tab: 'description' | 'details' | 'tech-stack') {
     this.activeTab.set(tab);
   }
 
@@ -39,4 +52,20 @@ export class Dashboard {
   closeRedirectModal() {
     this.isRedirectModalOpen.set(false);
   }
+
+  selectVersion(selected: AppVersion): void {
+    this.versions.forEach(v => (v.active = v === selected))
+    this.siteUrl = selected.url;
+    this.isDropdownOpen = false;
+  }
+
+  // close dropdown when user clicks elsewhere
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const wrapper = event.target as HTMLElement;
+    if (!wrapper.closest('.version-select-wrapper')) {
+      this.isDropdownOpen = false;
+    }
+  }
 }
+
