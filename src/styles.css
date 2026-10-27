@@ -28,7 +28,8 @@ button {
   --surface: #FBFEF9;
   --surface-2: #aaaaad4c;
   --text: #1A202C;
-  --primary-soft: #7D7C84;
+  --primary: #D8DBE2;
+  --primary-soft: #d4d1d18a;
 }
 
 :root {

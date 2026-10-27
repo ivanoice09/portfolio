@@ -13,7 +13,10 @@ export class Dashboard {
 
   readonly activeTab = signal<'description' | 'docs' | 'preview'>('description');
   readonly disabled = signal(true);
+  isRedirectModalOpen = signal(false);
   isDropdownOpen = false;
+
+  siteUrl = 'https://google.com';
 
   sections = [
     { id: 'about', label: 'About' },
@@ -27,5 +30,13 @@ export class Dashboard {
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  openRedirectModal() {
+    this.isRedirectModalOpen.set(true);
+  }
+
+  closeRedirectModal() {
+    this.isRedirectModalOpen.set(false);
   }
 }

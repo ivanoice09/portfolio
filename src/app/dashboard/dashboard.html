@@ -94,13 +94,15 @@
               }
             </div>
             <div class="version-select-wrapper">
-              <button type="button" class="btn-redirect-modal">
-                LIVE DEMO
+              <button type="button" class="btn-redirect-modal" (click)="openRedirectModal()">
+                <span>Try it out!</span>
               </button>
               <button type="button" class="btn-select-version" (click)="toggleDropdown()">
                 <i class="bi bi-git"></i>
               </button>
-              <!-- PUT DROPDOWN HERE -->
+              @if (isDropdownOpen) {
+                
+              }
             </div>
           </div>
         </swiper-slide>
@@ -146,3 +148,35 @@
       <div class="contact-list"></div>
   </section>
 </div>
+
+<!-- MODAL CONFIRM REDIRECT LIVE DEMO -->
+@if (isRedirectModalOpen()) {
+  <div class="modal-backdrop" [class.hidden]="!isRedirectModalOpen()" (click)="closeRedirectModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Attention</h2>
+      </div>
+      <div class="modal-container">
+        <p>You're about to be redirected to a live demonstration of this project.</p>
+      </div>
+      <div class="modal-actions">
+        <button
+          type="button"
+          class="btn-cancel-redirect"
+          (click)="closeRedirectModal()"
+        >
+          CANCEL
+        </button>
+
+        <a 
+          [href]="siteUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-proceed"
+        >
+          PROCEED
+        </a>
+      </div>
+    </div>
+  </div>
+}
