@@ -1,3 +1,7 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
 html {
   scroll-behavior: smooth;
 }
@@ -20,4 +24,15 @@ button {
   font-size: 100%;
   font-weight: inherit;
   color: inherit;
+}
+
+:root,
+[data-theme='light'] {
+  --bg: #ECEBE4;
+  --surface: #485665;
+}
+
+swiper-container {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
 }

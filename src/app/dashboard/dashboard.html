@@ -3,17 +3,11 @@
 
   <section id="about" class="dashboard-section">
 
-    <div class="photo-container">
-      <div class="photo-frame">
-        <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
-      </div>
+    <div class="section-title">
+      <span>ABOUT ME</span>
     </div>
 
-    <div class="col-2">
-      <div class="section-title">
-        <span>ABOUT ME</span>
-      </div>
-
+    <div class="intro-wrapper">
       <div class="intro">
         <p>Hi, I’m Ivan Sion, a full-stack web developer based in Milan.</p>
         <p>
@@ -25,60 +19,40 @@
           grow as a developer.
         </p>
       </div>
+
+      <div class="photo-frame">
+        <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
+      </div>
     </div>
 
   </section>
 
-  <section 
-    id="projects" 
-    class="dashboard-section project-section"
-    #projectsSection
-  >
-    <div class="project-number-container">
-      <div class="project-numbers">
-        <div>5</div>
-        <div>4</div>
-        <div>3</div>
-        <div>2</div>
-        <div>1</div>
-      </div>
+  <section id="projects" class="dashboard-section">
+    <div class="section-title">
+      <span>PROJECTS</span>
     </div>
 
-    <div class="col-2 projects-container">
-      <div class="section-title">
-        <span>PROJECTS</span>
-      </div>
-
-      <div class="project-list-frame">
-        <div class="project-list" #projectList>
-          <div class="project-card">PROJECT5</div>
-          <div class="project-card">PROJECT4</div>
-          <div class="project-card">PROJECT3</div>
-          <div class="project-card">PROJECT2</div>
-          <div class="project-card">PROJECT1</div>
-      </div>
-      </div>
-
-    </div>
-
-    <div class="project-title-container">
-      <div class="project-titles">
-        <div>EMPLOYEE SCHEDULER</div>
-        <div>BIKE ECOMMERCE</div>
-    </div>
-    </div>
-    
+    <swiper-container
+      [slidesPerView]="1"
+      [centeredSlides]="true"
+      [loop]="true"
+      [pagination]="{ clickable: true }"
+      [navigation]="true"
+      [keyboard]="true"
+      class="project-list"
+    >
+      <swiper-slide class="project-card">1</swiper-slide>
+      <swiper-slide class="project-card">2</swiper-slide>
+      <swiper-slide class="project-card">3</swiper-slide>
+      <swiper-slide class="project-card">4</swiper-slide>
+      <swiper-slide class="project-card">5</swiper-slide>
+    </swiper-container>
   </section>
 
   <section id="contacts" class="dashboard-section">
-    <div class="col-1">
-
-    </div>
-    <div class="col-2">
       <div class="section-title">
         <span>CONTACTS</span>
       </div>
       <div class="contact-list"></div>
-    </div>
   </section>
 </div>
