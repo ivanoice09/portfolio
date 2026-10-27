@@ -1,7 +1,3 @@
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-
 html {
   scroll-behavior: smooth;
 }
@@ -29,10 +25,13 @@ button {
 :root,
 [data-theme='light'] {
   --bg: #ECEBE4;
-  --surface: #485665;
+  --surface: #FBFEF9;
+  --surface-2: #aaaaad4c;
+  --text: #1A202C;
+  --primary-soft: #7D7C84;
 }
 
-swiper-container {
-  --swiper-navigation-color: #ffffff;
-  --swiper-pagination-color: #ffffff;
+:root {
+  --swiper-navigation-color: var(--text);
+  --swiper-navigation-size: 32px;
 }

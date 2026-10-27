@@ -32,21 +32,111 @@
       <span>PROJECTS</span>
     </div>
 
-    <swiper-container
-      [slidesPerView]="1"
-      [centeredSlides]="true"
-      [loop]="true"
-      [pagination]="{ clickable: true }"
-      [navigation]="true"
-      [keyboard]="true"
-      class="project-list"
-    >
-      <swiper-slide class="project-card">1</swiper-slide>
-      <swiper-slide class="project-card">2</swiper-slide>
-      <swiper-slide class="project-card">3</swiper-slide>
-      <swiper-slide class="project-card">4</swiper-slide>
-      <swiper-slide class="project-card">5</swiper-slide>
-    </swiper-container>
+      <swiper-container
+          [slidesPerView]="1"
+          /* [spaceBetween]="24" */
+          [centeredSlides]="true"
+          /* [loop]="true" */
+          /* [pagination]="{ clickable: true }" */
+          [navigation]="true"
+          [keyboard]="true"
+          class="project-list"
+      >
+        <swiper-slide class="project-card">
+          <div class="project-title">
+            <span>Employee Scheduler</span>
+          </div>
+          <div class="project-container">
+            <div class="card-actions">
+              <button
+                type="button"
+                [class.active]="activeTab() === 'description'"
+                (click)="setTab('description')"
+              >
+                DESCRIPTION
+              </button>
+
+              <button
+                type="button"
+                [class.active]="activeTab() === 'docs'"
+                (click)="setTab('docs')"
+              >
+                DOCUMENTATION
+              </button>
+
+              <button
+                type="button"
+                [class.active]="activeTab() === 'preview'"
+                (click)="setTab('preview')"
+              >
+                PREVIEW
+              </button>
+            </div>
+            <div class="card-body">
+              @switch (activeTab()) {
+                @case ('description') {
+                  <p>
+                    A web application that simplifies employee shift scheduling. 
+                    Managers and admins can create and assign shifts efficiently, 
+                    while employees can easily view their schedules.
+                  </p>
+                }
+                @case ('docs') {
+                  <div class="docs-container">
+                    DOCSSSSSSSS
+                  </div>
+                }
+                @case ('preview') {
+                  <div class="preview-container">
+                    PREVIEEEEEW
+                  </div>
+                }
+              }
+            </div>
+            <div class="version-select-wrapper">
+              <button type="button" class="btn-redirect-modal">
+                LIVE DEMO
+              </button>
+              <button type="button" class="btn-select-version" (click)="toggleDropdown()">
+                <i class="bi bi-git"></i>
+              </button>
+              <!-- PUT DROPDOWN HERE -->
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="project-card">
+          <div class="project-title">
+            <span>Bike Ecommerce</span>
+          </div>
+          <div class="project-container">
+            
+          </div>
+        </swiper-slide>
+        <swiper-slide class="project-card">
+          <div class="project-title">
+            <span>Music player</span>
+          </div>
+          <div class="project-container">
+            
+          </div>
+        </swiper-slide>
+        <swiper-slide class="project-card">
+          <div class="project-title">
+            <span>Splityfive</span>
+          </div>
+          <div class="project-container">
+            
+          </div>
+        </swiper-slide>
+        <swiper-slide class="project-card">
+          <div class="project-title">
+            <span>Java bank</span>
+          </div>
+          <div class="project-container">
+            
+          </div>
+        </swiper-slide>
+      </swiper-container>
   </section>
 
   <section id="contacts" class="dashboard-section">
