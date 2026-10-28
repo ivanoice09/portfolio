@@ -34,130 +34,19 @@
 
       <swiper-container
           [slidesPerView]="1"
-          /* [spaceBetween]="24" */
           [centeredSlides]="true"
-          /* [loop]="true" */
-          /* [pagination]="{ clickable: true }" */
           [navigation]="true"
           [keyboard]="true"
           class="project-list"
       >
-        <swiper-slide class="project-card">
-          <div class="project-title">
-            <span>EMPLOYEE SCHEDULER</span>
-          </div>
-          <div class="project-container">
-            <div class="card-actions">
-              <button
-                type="button"
-                [class.active]="activeTab() === 'description'"
-                (click)="setTab('description')"
-              >
-                DESCRIPTION
-              </button>
-
-              <button
-                type="button"
-                [class.active]="activeTab() === 'details'"
-                (click)="setTab('details')"
-              >
-                DETAILS
-              </button>
-
-              <button
-                type="button"
-                [class.active]="activeTab() === 'tech-stack'"
-                (click)="setTab('tech-stack')"
-              >
-                TECH STACK
-              </button>
-            </div>
-            <div class="card-body">
-              @switch (activeTab()) {
-                @case ('description') {
-                  <p>
-                    A web application that simplifies employee shift scheduling. 
-                    Managers and admins can create and assign shifts efficiently, 
-                    while employees can easily view their schedules.
-                  </p>
-                }
-                @case ('details') {
-                  <div class="details-container">
-                    DOCSSSSSSSS
-                  </div>
-                }
-                @case ('tech-stack') {
-                  <div class="preview-container">
-                    PREVIEEEEEW
-                  </div>
-                }
-              }
-            </div>
-            <div class="version-select-wrapper">
-              <button type="button" class="btn-redirect-modal" (click)="openRedirectModal()">
-                <span>Try it out!</span>
-              </button>
-              <button 
-                type="button" 
-                class="btn-select-version" 
-                (click)="toggleDropdown()"
-                aria-haspopup="true"
-                [attr.aria-expanded]="isDropdownOpen"
-              >
-                <i class="bi bi-git"></i>
-              </button>
-              @if (isDropdownOpen) {
-                <ul class="version-dropdown" role="menu">
-                  @for (version of versions; track version.url) {
-                    <li role="none">
-                      <button
-                        type="button"
-                        class="version-dropdown-item"
-                        role="menuitem"
-                        [class.active]="version.active"
-                        (click)="selectVersion(version)"
-                      >
-                        {{ version.label }}
-                      </button>
-                    </li>
-                  }
-                </ul>
-              }
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide class="project-card">
-          <div class="project-title">
-            <span>Bike Ecommerce</span>
-          </div>
-          <div class="project-container">
-            
-          </div>
-        </swiper-slide>
-        <swiper-slide class="project-card">
-          <div class="project-title">
-            <span>Music player</span>
-          </div>
-          <div class="project-container">
-            
-          </div>
-        </swiper-slide>
-        <swiper-slide class="project-card">
-          <div class="project-title">
-            <span>Splityfive</span>
-          </div>
-          <div class="project-container">
-            
-          </div>
-        </swiper-slide>
-        <swiper-slide class="project-card">
-          <div class="project-title">
-            <span>Java bank</span>
-          </div>
-          <div class="project-container">
-            
-          </div>
-        </swiper-slide>
+        @for (project of projects; track project.id) {
+          <swiper-slide>
+            <app-project-card 
+              [project]="project"
+              (openRedirect)="openModal($event)"
+            />
+          </swiper-slide>          
+        }
       </swiper-container>
   </section>
 
@@ -170,7 +59,7 @@
 </div>
 
 <!-- MODAL CONFIRM REDIRECT LIVE DEMO -->
-@if (isRedirectModalOpen()) {
+@if (isRedirectModalOpen(); as project) {
   <div class="modal-backdrop" [class.hidden]="!isRedirectModalOpen()" (click)="closeRedirectModal()">
     <div class="modal">
       <div class="modal-header">
@@ -189,7 +78,7 @@
         </button>
 
         <a 
-          [href]="siteUrl"
+          [href]=""
           target="_blank"
           rel="noopener noreferrer"
           class="btn-proceed"

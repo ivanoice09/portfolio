@@ -1,0 +1,91 @@
+<div class="project-card">
+  <div class="project-title">
+    <span>{{ project().title }}</span>
+  </div>
+
+  <div class="project-container">
+    <div class="card-actions">
+      <button
+        type="button"
+        [class.active]="activeTab() === 'description'"
+        (click)="setTab('description')"
+      >
+        DESCRIPTION
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeTab() === 'details'"
+        (click)="setTab('details')"
+      >
+        DETAILS
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeTab() === 'tech-stack'"
+        (click)="setTab('tech-stack')"
+      >
+        TECH STACK
+      </button>
+    </div>
+
+    <div class="card-body">
+      @switch (activeTab()) {
+        @case ('description') {
+          <p>{{ project().description }}</p>
+        }
+        @case ('details') {
+          <div class="details-container">
+            {{ project().details }}
+          </div>
+        }
+        @case ('tech-stack') {
+          <div class="preview-container">
+            @for (tech of project().techStack; track tech) {
+              <span class="tech-item">{{ tech }}</span>
+            }
+          </div>
+        }
+      }
+    </div>
+
+    <div class="version-select-wrapper">
+      <button
+        type="button"
+        class="btn-redirect-modal"
+        (click)="openRedirectModal()"
+      >
+        <span>Try it out!</span>
+      </button>
+
+      <button
+        type="button"
+        class="btn-select-version"
+        (click)="toggleDropdown()"
+        aria-haspopup="true"
+        [attr.aria-expanded]="isDropdownOpen()"
+      >
+        <i class="bi bi-git"></i>
+      </button>
+
+      @if (isDropdownOpen()) {
+        <ul class="version-dropdown" role="menu">
+          @for (version of project().versions; track version.url) {
+            <li role="none">
+              <button
+                type="button"
+                class="version-dropdown-item"
+                role="menuitem"
+                [class.active]="version.active"
+                (click)="selectVersion(version)"
+              >
+                {{ version.label }}
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</div>

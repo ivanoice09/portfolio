@@ -1,0 +1,153 @@
+.project-card {
+  height: 500px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.project-title {
+  width: 650px;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background-color: var(--surface);
+  padding: 10px 0;
+  box-shadow: 3px 3px 3px rgba(82, 82, 82, 0.295);
+  text-align: center;
+}
+
+.project-container {
+  width: 650px;
+  height: 80%;
+  background-color: var(--surface);
+  border-radius: 16px;
+  box-shadow: 4px 6px 3px rgba(82, 82, 82, 0.295);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-actions {
+  padding: 20px 0;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card-actions button {
+  border: none;
+  border-radius: 6px;
+  background: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.card-actions button.active {
+  border: 2px solid var(--primary-soft);
+}
+
+.card-actions button:hover {
+  background-color: var(--surface-2);
+}
+
+.disable {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.card-body {
+  height: 60%;
+  padding: 16px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.card-body p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.version-select-wrapper {
+  display: inline-flex;
+  margin-top: 10px;
+  width: 60%;
+  height: 40px;
+  position: relative;
+}
+
+.btn-redirect-modal {
+  background-color: var(--primary);
+  width: 100%;
+  border: 2px solid var(--primary-soft);
+  border-radius: 8px 0 0 8px;
+}
+
+.btn-redirect-modal:hover {
+  background-color: var(--primary-soft);
+}
+
+.btn-redirect-modal span {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-select-version {
+  background-color: var(--primary);
+  border: 2px solid var(--primary-soft);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.btn-select-version i {
+  font-size: 20px;
+}
+
+.btn-select-version:hover {
+  background-color: var(--primary-soft);
+}
+
+/* ============================================= */
+/*           VERSION DROPDOWN SETTINGS           */
+/* ============================================= */
+
+.version-dropdown {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.version-dropdown-item {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.version-dropdown-item.active {
+  background: #e6f0ff;
+  font-weight: 600;
+}
+
+.version-dropdown-item:hover {
+  background: #f2f2f2;
+}
+
+.hidden {
+  display: none;
+}
