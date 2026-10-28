@@ -1,4 +1,4 @@
-import { Component, HostListener, input, output, signal } from '@angular/core';
+import { Component, computed, HostListener, input, output, signal } from '@angular/core';
 import { Project, ProjectTab, ProjectVersion } from '../shared/model/project';
 
 @Component({
@@ -32,9 +32,16 @@ export class ProjectCard {
 
   selectVersion(version: ProjectVersion): void {
     this.selectedVersion.set(version);
+    this.isDropdownOpen.set(false);
   }
 
+  hasVersions = computed(() => {
+    const versions = this.project().versions;
+    return !!versions?.length;
+  });
+
   openRedirectModal(): void {
+    if (!this.hasVersions()) return;
     const version = this.selectedVersion() ?? this.project().versions[0];
     if (version) {
       this.openRedirect.emit(version);

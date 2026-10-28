@@ -1,40 +1,42 @@
 .project-card {
-  height: 700px;
+  height: 510px;
   color: var(--text);
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.project-title {
-  width: 800px;
-  font-size: 24px;
-  font-weight: 500;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  background-color: var(--surface);
-  padding: 10px 0;
-  box-shadow: 3px 3px 3px rgba(82, 82, 82, 0.295);
-  text-align: center;
-}
-
 .project-container {
   width: 800px;
-  height: 80%;
+  min-height: 430px;
   background-color: var(--surface);
   border-radius: 16px;
   box-shadow: 4px 6px 3px rgba(82, 82, 82, 0.295);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.project-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
+.project-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 16px;
+}
+
 .card-actions {
-  padding: 20px 0;
-  width: 90%;
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: end;
+  gap: 10px;
+  margin-right: 16px;
 }
 
 .card-actions button {
@@ -42,7 +44,7 @@
   border-radius: 6px;
   background: none;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .card-actions button.active {
@@ -53,13 +55,8 @@
   background-color: var(--surface-2);
 }
 
-.disable {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .card-body {
-  height: 70%;
+  height: 300px;
   padding: 16px 40px;
   display: flex;
   text-align: center;
@@ -72,9 +69,42 @@
 }
 
 .details-container {
+  width: 480px;
   display: flex;
   flex-direction: column;
+  align-items: start;
+  gap: 30px;
+}
+
+.details-container a {
+  all: unset;
+  cursor: default;
+  width: 100%;
+  background-color: var(--primary);
+  border: 1px solid var(--primary-soft);
+  border-radius: 8px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.details-container span {
+  margin-left: 10px;
+  font-size: 21px;
+}
+
+.details-container a:hover {
+  background-color: var(--primary-soft);
+}
+
+.details-container i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.preview-container span {
+  font-size: 21px;
 }
 
 .version-select-wrapper {
@@ -88,8 +118,8 @@
 .btn-redirect-modal {
   background-color: var(--primary);
   width: 100%;
-  border: 2px solid var(--primary-soft);
   border-radius: 8px 0 0 8px;
+  border: none;
 }
 
 .btn-redirect-modal:hover {
@@ -104,9 +134,9 @@
 
 .btn-select-version {
   background-color: var(--primary);
-  border: 2px solid var(--primary-soft);
   border-left: none;
   border-radius: 0 8px 8px 0;
+  border: none;
 }
 
 .btn-select-version i {
@@ -156,4 +186,9 @@
 
 .hidden {
   display: none;
+}
+
+.disable {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

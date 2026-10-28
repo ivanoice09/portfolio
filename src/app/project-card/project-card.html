@@ -1,93 +1,92 @@
 <div class="project-card">
-  <div class="project-title">
-    <span>{{ project().title }}</span>
-  </div>
-
   <div class="project-container">
-    <div class="card-actions">
-      <button
-        type="button"
-        [class.active]="activeTab() === 'description'"
-        (click)="setTab('description')"
-      >
-        DESCRIPTION
-      </button>
+    <div class="project-top-bar">
+      <div class="project-title">
+        <span>{{ project().title }}</span>
+      </div>
+      <div class="card-actions">
+        <button type="button" [class.active]="activeTab() === 'description'" (click)="setTab('description')">
+          <i class="bi bi-card-text"></i>
+        </button>
 
-      <button
-        type="button"
-        [class.active]="activeTab() === 'details'"
-        (click)="setTab('details')"
-      >
-        DETAILS
-      </button>
+        <button type="button" [class.active]="activeTab() === 'details'" (click)="setTab('details')">
+          <i class="bi bi-file-earmark-code"></i>
+        </button>
 
-      <button
-        type="button"
-        [class.active]="activeTab() === 'preview'"
-        (click)="setTab('preview')"
-      >
-        PREVIEW
-      </button>
+        <!-- <button
+          type="button"
+          [class.active]="activeTab() === 'preview'"
+          (click)="setTab('preview')"
+        >
+          <i class="bi bi-play-btn"></i>
+        </button> -->
+      </div>
     </div>
+
 
     <div class="card-body">
       @switch (activeTab()) {
-        @case ('description') {
-          <p>{{ project().description }}</p>
-        }
-        @case ('details') {
-          <div class="details-container">
-            <a 
-              [href]="project().documentation"
-            >
-              Full Documentation
-            </a>
-          </div>
-        }
-        @case ('preview') {
-          <div class="preview-container">
-            
-          </div>
-        }
+      @case ('description') {
+      <p>{{ project().description }}</p>
+      }
+      @case ('details') {
+      <div class="details-container">
+        <a [href]="project().documentation" target="_blank" rel="noopener noreferrer">
+          <span>Full documentation</span>
+          <i class="bi bi-link"></i>
+        </a>
+        <a [href]="project().sourceCodeBe" target="_blank" rel="noopener noreferrer">
+          <span>Backend source code</span>
+          <i class="bi bi-link"></i>
+        </a>
+        <a [href]="project().sourceCodeFe" target="_blank" rel="noopener noreferrer">
+          <span>Frontend source code</span>
+          <i class="bi bi-link"></i>
+        </a>
+      </div>
+      }
+      @case ('preview') {
+      <div class="preview-container">
+        <span>Work in progress...</span>
+      </div>
+      }
       }
     </div>
 
     <div class="version-select-wrapper">
-      <button
-        type="button"
-        class="btn-redirect-modal"
-        (click)="openRedirectModal()"
-      >
-        <span>Try it out!</span>
-      </button>
+      @if (hasVersions()) {
+        <button 
+          type="button" 
+          class="btn-redirect-modal"
+          (click)="openRedirectModal()"
+        >
+          <span>Try it out!</span>
+        </button>
 
-      <button
-        type="button"
-        class="btn-select-version"
-        (click)="toggleDropdown()"
-        aria-haspopup="true"
-        [attr.aria-expanded]="isDropdownOpen()"
-      >
-        <i class="bi bi-git"></i>
-      </button>
+        <button 
+          type="button" 
+          class="btn-select-version" 
+          (click)="toggleDropdown()"
+          aria-haspopup="true"
+          [attr.aria-expanded]="isDropdownOpen()"
+        >
+          <i class="bi bi-git"></i>
+        </button>
 
-      @if (isDropdownOpen()) {
+        @if (isDropdownOpen()) {
         <ul class="version-dropdown" role="menu">
           @for (version of project().versions; track version.url) {
-            <li role="none">
-              <button
-                type="button"
-                class="version-dropdown-item"
-                role="menuitem"
-                [class.active]="selectedVersion()?.url === version.url"
-                (click)="selectVersion(version)"
-              >
-                {{ version.label }}
-              </button>
-            </li>
+          <li role="none">
+            <button type="button" class="version-dropdown-item" role="menuitem"
+              [class.active]="selectedVersion()?.url === version.url" (click)="selectVersion(version)">
+              {{ version.label }}
+            </button>
+          </li>
           }
         </ul>
+        }
       }
     </div>
+    
   </div>
 </div>

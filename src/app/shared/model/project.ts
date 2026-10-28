@@ -11,6 +11,7 @@ export interface Project {
   title: string;
   description: string;
   documentation: string;
-  sourceCodes: string[];
+  sourceCodeBe: string;
+  sourceCodeFe: string;
   versions: ProjectVersion[];
 }

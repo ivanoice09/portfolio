@@ -4,7 +4,7 @@
   <section id="about" class="dashboard-section">
 
     <div class="section-title">
-      <span>ABOUT ME</span>
+      <span>ABOUT</span>
     </div>
 
     <div class="intro-wrapper">
@@ -52,9 +52,60 @@
 
   <section id="contacts" class="dashboard-section">
       <div class="section-title">
-        <span>CONTACTS</span>
+        <span>CONTACT</span>
       </div>
-      <div class="contact-list"></div>
+      <div class="contact-container">
+        <div class="contact-card">
+          <div class="contact-list">
+            <button
+              type="button"
+              (click)="copyNumber()"
+              [attr.aria-label]="copied() ? 'Number copied' : 'Copy number'"
+            >
+              <i class="bi bi-telephone"></i>
+              <span>(+39) {{ phoneNumber }}</span>
+              @if (copied()) {
+                <i class="bi bi-check-lg"></i>
+              } @else {
+                <i class="bi bi-copy"></i>
+              }
+            </button>
+            <button
+              type="button"
+              (click)="copyEmail()"
+              [attr.aria-label]="emailCopied() ? 'Email copied' : 'Copy email'"
+            >
+              <i class="bi bi-envelope"></i>
+              <span>{{ email }}</span>
+              @if (emailCopied()) {
+                <i class="bi bi-check-lg"></i>
+              } @else {
+                <i class="bi bi-copy"></i>
+              }
+            </button>
+            <a
+              href="https://www.linkedin.com/in/sionivan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FAEC32KYRl%2BioGmNF9gJ%2Bw%3D%3D" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="linkedIn"
+            >
+              <i class="bi bi-linkedin"></i>
+              <span>LinkedIn</span>
+              <i class="bi bi-link"></i>
+            </a>
+            <a 
+              href="https://github.com/ivanoice09"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github"
+            >
+              <i class="bi bi-github"></i>
+              <span>Github</span>
+              <i class="bi bi-link"></i>
+            </a>
+          </div>
+        </div>
+      </div>
   </section>
 </div>
 
