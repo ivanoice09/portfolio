@@ -13,8 +13,8 @@ import { ProjectCard } from '../project-card/project-card';
 })
 export class Dashboard {
 
-  readonly selectedProject = signal<Project | null>(null);
   readonly isRedirectModalOpen = signal(false);
+  readonly selectedRedirectVersion = signal<ProjectVersion | null>(null);
   readonly disabled = signal(true);
 
   sections = [
@@ -23,13 +23,17 @@ export class Dashboard {
     { id: 'contacts', label: 'Contacts' },
   ];
 
-    projects: Project[] = [
+  projects: Project[] = [
     {
       id: 'employee-scheduler',
       title: 'Employee Scheduler',
-      description: 'A web application that simplifies employee shift scheduling...',
-      details: 'Documentation, links, architecture notes...',
-      techStack: ['Angular', 'Spring Boot', 'PostgreSQL', 'Docker'],
+      description:
+        'A web application that simplifies employee shift scheduling. Managers and admins can create and assign shifts efficiently, while employees can easily view their schedules.',
+      documentation: 'https://github.com/ivanoice09/employee-scheduler-docs',
+      sourceCodes: [
+        'https://github.com/ivanoice09/employee-scheduler',
+        'https://github.com/ivanoice09/employee-scheduler-fe',
+      ],
       versions: [
         {
           label: 'modern-ui',
@@ -43,24 +47,16 @@ export class Dashboard {
         },
       ],
     },
-    {
-      id: 'bike-ecommerce',
-      title: 'Bike Ecommerce',
-      description: '...',
-      details: '...',
-      techStack: ['Angular', 'Node.js', 'MongoDB'],
-      versions: [],
-    },
-    // Music player, Splityfive, Java bank...
   ];
 
-  openModal(project: Project): void {
-    this.selectedProject.set(project);
+  openRedirectModal(version: ProjectVersion): void {
+    this.selectedRedirectVersion.set(version);
     this.isRedirectModalOpen.set(true);
   }
 
   closeRedirectModal(): void {
     this.isRedirectModalOpen.set(false);
-    this.selectedProject.set(null);
   }
+
+
 }

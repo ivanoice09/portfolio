@@ -43,7 +43,7 @@
           <swiper-slide>
             <app-project-card 
               [project]="project"
-              (openRedirect)="openModal($event)"
+              (openRedirect)="openRedirectModal($event)"
             />
           </swiper-slide>          
         }
@@ -59,8 +59,8 @@
 </div>
 
 <!-- MODAL CONFIRM REDIRECT LIVE DEMO -->
-@if (isRedirectModalOpen(); as project) {
-  <div class="modal-backdrop" [class.hidden]="!isRedirectModalOpen()" (click)="closeRedirectModal()">
+@if (isRedirectModalOpen(); as selectedVersion) {
+  <div class="modal-backdrop" (click)="closeRedirectModal()">
     <div class="modal">
       <div class="modal-header">
         <h2>Attention</h2>
@@ -78,7 +78,7 @@
         </button>
 
         <a 
-          [href]=""
+          [href]="selectedRedirectVersion()?.url"
           target="_blank"
           rel="noopener noreferrer"
           class="btn-proceed"

@@ -1,4 +1,4 @@
-export type ProjectTab = 'description' | 'details' | 'tech-stack';
+export type ProjectTab = 'description' | 'details' | 'preview';
 
 export interface ProjectVersion {
   label: string;
@@ -10,7 +10,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  details: string; // or a structured object/array
-  techStack: string[]; // or structured data
+  documentation: string;
+  sourceCodes: string[];
   versions: ProjectVersion[];
 }

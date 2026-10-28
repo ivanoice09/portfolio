@@ -1,5 +1,5 @@
 .project-card {
-  height: 500px;
+  height: 700px;
   color: var(--text);
   display: flex;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .project-title {
-  width: 650px;
+  width: 800px;
   font-size: 24px;
   font-weight: 500;
   border-radius: 10px;
@@ -19,7 +19,7 @@
 }
 
 .project-container {
-  width: 650px;
+  width: 800px;
   height: 80%;
   background-color: var(--surface);
   border-radius: 16px;
@@ -59,8 +59,8 @@
 }
 
 .card-body {
-  height: 60%;
-  padding: 16px;
+  height: 70%;
+  padding: 16px 40px;
   display: flex;
   text-align: center;
   align-items: center;
@@ -69,6 +69,12 @@
 .card-body p {
   font-size: 22px;
   font-weight: 500;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .version-select-wrapper {

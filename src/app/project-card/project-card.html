@@ -23,10 +23,10 @@
 
       <button
         type="button"
-        [class.active]="activeTab() === 'tech-stack'"
-        (click)="setTab('tech-stack')"
+        [class.active]="activeTab() === 'preview'"
+        (click)="setTab('preview')"
       >
-        TECH STACK
+        PREVIEW
       </button>
     </div>
 
@@ -37,14 +37,16 @@
         }
         @case ('details') {
           <div class="details-container">
-            {{ project().details }}
+            <a 
+              [href]="project().documentation"
+            >
+              Full Documentation
+            </a>
           </div>
         }
-        @case ('tech-stack') {
+        @case ('preview') {
           <div class="preview-container">
-            @for (tech of project().techStack; track tech) {
-              <span class="tech-item">{{ tech }}</span>
-            }
+            
           </div>
         }
       }
@@ -77,7 +79,7 @@
                 type="button"
                 class="version-dropdown-item"
                 role="menuitem"
-                [class.active]="version.active"
+                [class.active]="selectedVersion()?.url === version.url"
                 (click)="selectVersion(version)"
               >
                 {{ version.label }}

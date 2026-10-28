@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  input,
-  output,
-  signal,
-} from '@angular/core';
+import { Component, HostListener, input, output, signal } from '@angular/core';
 import { Project, ProjectTab, ProjectVersion } from '../shared/model/project';
 
 @Component({
@@ -16,13 +10,12 @@ import { Project, ProjectTab, ProjectVersion } from '../shared/model/project';
 })
 export class ProjectCard {
   project = input.required<Project>();
+  selectedVersion = signal<ProjectVersion | null>(null);
+
+  openRedirect = output<ProjectVersion>();
 
   activeTab = signal<ProjectTab>('description');
   isDropdownOpen = signal(false);
-
-  selectedVersion = signal<ProjectVersion | null>(null);
-
-  readonly openRedirect = output<Project>();
 
   setTab(tab: ProjectTab): void {
     this.activeTab.set(tab);
@@ -30,14 +23,22 @@ export class ProjectCard {
 
   toggleDropdown(): void {
     this.isDropdownOpen.update((open) => !open);
-  }
 
-  openRedirectModal(): void {
-    this.openRedirect.emit(this.project());
+    if (this.isDropdownOpen() && !this.selectedVersion()) {
+      const active = this.project().versions.find((v) => v.active);
+      if (active) this.selectedVersion.set(active);
+    }
   }
 
   selectVersion(version: ProjectVersion): void {
     this.selectedVersion.set(version);
+  }
+
+  openRedirectModal(): void {
+    const version = this.selectedVersion() ?? this.project().versions[0];
+    if (version) {
+      this.openRedirect.emit(version);
+    }
   }
 
   // close dropdown when user clicks elsewhere
