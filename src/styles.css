@@ -5,6 +5,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  color: var(--text);
 
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
@@ -26,7 +27,7 @@ button {
 [data-theme='light'] {
   --bg: #e5e8ec;
   --surface: #FBFEF9;
-  --surface-2: #c9cdcf8a;
+  --surface-2: #e5e8e88a;
   --text: #1A202C;
   --primary: #D8DBE2;
   --primary-soft: #d4d1d18a;

@@ -103,24 +103,21 @@ section {
   display: flex;
   align-items: center;
   min-height: 5rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-.btn-accordion {
-  border: none;
-  background: none;
+.project-header:hover {
+  background-color: var(--surface-2);
 }
 
-.btn-accordion i {
+.project-header i {
   font-size: 24px;
   padding: 1rem;
-  transition: background-color 0.3s ease;
   margin-left: 0.4rem;
   border-radius: 8px;
 }
 
-.btn-accordion i:hover {
-  background-color: var(--surface-2);
-}
 
 .project-row .wrapper {
   flex: 1;
@@ -136,7 +133,22 @@ section {
 }
 
 .wrapper a {
-  margin-right: 2rem;
+  all: unset;
+  margin-right: 1rem;
+  border: 1px solid var(--surface-2);
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  font-size: 24px;
+}
+
+.wrapper a:hover {
+  background-color: var(--surface);
+}
+
+.wrapper a i {
+  padding: 0 0.3rem;
+  font-size: 23px;
 }
 
 /* ====================================== */
@@ -160,14 +172,25 @@ section {
 }
 
 .accordion-content {
-  padding: 0 1.5rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
+}
+
+.accordion-content span {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .accordion-content p {
   font-size: 24px;
   font-weight: 400;
+}
+
+.tech-stack p {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0.8rem 0;
 }
 
 /* ====================================== */

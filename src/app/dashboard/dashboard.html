@@ -34,19 +34,16 @@
     <div class="project-list">
       @for (project of projects; track project.id) {
         <div class="project-row">
-          <div class="project-header">
-            <button 
-              type="button" 
-              class="btn-accordion"
-              (click)="toggleAccordion(project.id)"
-              [attr.aria-expanded]="isAccordionOpen(project.id)"
-            >
-              @if (isAccordionOpen(project.id)) {
-                <i class="bi bi-chevron-down"></i>
-              } @else {
-                <i class="bi bi-chevron-right"></i>
-              }
-            </button>
+          <div 
+            class="project-header"
+            (click)="toggleAccordion(project.id)"
+            [attr.aria-expanded]="isAccordionOpen(project.id)"
+          >
+            @if (isAccordionOpen(project.id)) {
+              <i class="bi bi-chevron-down"></i>
+            } @else {
+              <i class="bi bi-chevron-right"></i>
+            }
             <div class="wrapper">
               <span class="project-title">{{ project.name }}</span>
 
@@ -55,8 +52,10 @@
                   [href]="project.url"
                   target="_blank"
                   rel="noopener noreferrer"
+                  (click)="$event.stopPropagation()"
                 >
-                  <span>VISIT SITE</span>
+                  <span>View site</span>
+                  <i class="bi bi-arrow-up-right"></i>
                 </a>
               }
             </div>
@@ -64,8 +63,14 @@
           <div class="accordion" [class.open]="isAccordionOpen(project.id)">
             <div class="accordion-inner">
               <div class="accordion-content">
-                
+                <span>Description</span>
                 <p>{{ project.description }}</p>
+                <div class="tech-stack">
+                  <span>Tech stack</span>
+                    @for (tech of project.techStack; track tech.id) {
+                      <p> - {{ tech.name }}</p>
+                    }
+                </div>
               </div>
             </div>
           </div>

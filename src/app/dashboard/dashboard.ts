@@ -1,5 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, signal } from '@angular/core';
 import { Project } from '../shared/model/Project';
+import { TechStack } from '../shared/model/TechStack';
 
 @Component({
   imports: [],
@@ -9,14 +10,18 @@ import { Project } from '../shared/model/Project';
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Dashboard {
-
+export class Dashboard {  
   projects: Project[] = [
     {
       id: 1,
       name: 'Employee Scheduler',
       description: 'A web application that simplifies employee shift scheduling. Managers and admins can create and assign shifts efficiently, while employees can easily view their schedules.',
-      url: 'https://modernswiftshifter.netlify.app'
+      url: 'https://modernswiftshifter.netlify.app',
+      techStack: [
+        { id: 1, name: 'Spring Boot', },
+        { id: 2, name: 'Angular', },
+        { id: 3, name: 'PostgreSQL', }
+      ]
     },
     {
       id: 2,
