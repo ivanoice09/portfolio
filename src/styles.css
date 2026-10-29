@@ -24,15 +24,10 @@ button {
 
 :root,
 [data-theme='light'] {
-  --bg: #ECEBE4;
+  --bg: #e5e8ec;
   --surface: #FBFEF9;
-  --surface-2: #aaaaad4c;
+  --surface-2: #c9cdcf8a;
   --text: #1A202C;
   --primary: #D8DBE2;
   --primary-soft: #d4d1d18a;
-}
-
-:root {
-  --swiper-navigation-color: var(--text);
-  --swiper-navigation-size: 32px;
 }

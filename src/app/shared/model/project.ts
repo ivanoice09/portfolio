@@ -1,17 +1,6 @@
-export type ProjectTab = 'description' | 'details' | 'preview';
-
-export interface ProjectVersion {
-  label: string;
-  url: string;
-  active?: boolean;
-}
-
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  documentation: string;
-  sourceCodeBe: string;
-  sourceCodeFe: string;
-  versions: ProjectVersion[];
+    id: number,
+    name: string,
+    description?: string,
+    url?: string,
 }

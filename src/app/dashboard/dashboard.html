@@ -1,15 +1,13 @@
 <div class="dashboard-container">
-  <app-sidenav [sections]="sections" />
 
-  <section id="about" class="dashboard-section">
-
+  <section id="about" class="about-section">
     <div class="section-title">
-      <span>ABOUT</span>
+      <span>About</span>
     </div>
-
-    <div class="intro-wrapper">
+    <div class="intro-photo-wrapper">
+      
       <div class="intro">
-        <p>Hi, I’m Ivan Sion, a full-stack web developer based in Milan.</p>
+        <p>Hi, I’m <span style="font-weight: bold;">Ivan Sion</span>, a full-stack web developer based in Milan.</p>
         <p>
           I enjoy building user-friendly applications with clean, maintainable code and thoughtful
           UI design.
@@ -19,124 +17,73 @@
           grow as a developer.
         </p>
       </div>
-
-      <div class="photo-frame">
-        <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
-      </div>
-    </div>
-
-  </section>
-
-  <section id="projects" class="dashboard-section">
-    <div class="section-title">
-      <span>PROJECTS</span>
-    </div>
-
-      <swiper-container
-          [slidesPerView]="1"
-          [centeredSlides]="true"
-          [navigation]="true"
-          [keyboard]="true"
-          class="project-list"
-      >
-        @for (project of projects; track project.id) {
-          <swiper-slide>
-            <app-project-card 
-              [project]="project"
-              (openRedirect)="openRedirectModal($event)"
-            />
-          </swiper-slide>          
-        }
-      </swiper-container>
-  </section>
-
-  <section id="contacts" class="dashboard-section">
-      <div class="section-title">
-        <span>CONTACT</span>
-      </div>
-      <div class="contact-container">
-        <div class="contact-card">
-          <div class="contact-list">
-            <button
-              type="button"
-              (click)="copyNumber()"
-              [attr.aria-label]="copied() ? 'Number copied' : 'Copy number'"
-            >
-              <i class="bi bi-telephone"></i>
-              <span>(+39) {{ phoneNumber }}</span>
-              @if (copied()) {
-                <i class="bi bi-check-lg"></i>
-              } @else {
-                <i class="bi bi-copy"></i>
-              }
-            </button>
-            <button
-              type="button"
-              (click)="copyEmail()"
-              [attr.aria-label]="emailCopied() ? 'Email copied' : 'Copy email'"
-            >
-              <i class="bi bi-envelope"></i>
-              <span>{{ email }}</span>
-              @if (emailCopied()) {
-                <i class="bi bi-check-lg"></i>
-              } @else {
-                <i class="bi bi-copy"></i>
-              }
-            </button>
-            <a
-              href="https://www.linkedin.com/in/sionivan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FAEC32KYRl%2BioGmNF9gJ%2Bw%3D%3D" 
-              target="_blank"
-              rel="noopener noreferrer"
-              class="linkedIn"
-            >
-              <i class="bi bi-linkedin"></i>
-              <span>LinkedIn</span>
-              <i class="bi bi-link"></i>
-            </a>
-            <a 
-              href="https://github.com/ivanoice09"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="github"
-            >
-              <i class="bi bi-github"></i>
-              <span>Github</span>
-              <i class="bi bi-link"></i>
-            </a>
-          </div>
+      
+      <div class="photo-container">
+        <div class="photo-frame">
+          <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="section-title">
+      <span>Projects</span>
+    </div>
+
+    <div class="project-list">
+      @for (project of projects; track project.id) {
+        <div class="project-row">
+          <div class="project-header">
+            <button 
+              type="button" 
+              class="btn-accordion"
+              (click)="toggleAccordion(project.id)"
+              [attr.aria-expanded]="isAccordionOpen(project.id)"
+            >
+              @if (isAccordionOpen(project.id)) {
+                <i class="bi bi-chevron-down"></i>
+              } @else {
+                <i class="bi bi-chevron-right"></i>
+              }
+            </button>
+            <div class="wrapper">
+              <span class="project-title">{{ project.name }}</span>
+
+              @if (project.url) {
+                <a 
+                  [href]="project.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>VISIT SITE</span>
+                </a>
+              }
+            </div>
+          </div>
+          <div class="accordion" [class.open]="isAccordionOpen(project.id)">
+            <div class="accordion-inner">
+              <div class="accordion-content">
+                
+                <p>{{ project.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div>
+
+    </div>
+  </section>
+
+  <section id="contacts" class="contacts-section">
+    <div class="section-title">
+      <span>Contact</span>
+    </div>
+    <div class="contact-container">
+
+    </div>
   </section>
 </div>
-
-<!-- MODAL CONFIRM REDIRECT LIVE DEMO -->
-@if (isRedirectModalOpen(); as selectedVersion) {
-  <div class="modal-backdrop" (click)="closeRedirectModal()">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Attention</h2>
-      </div>
-      <div class="modal-container">
-        <p>You're about to be redirected to a live demonstration of this project.</p>
-      </div>
-      <div class="modal-actions">
-        <button
-          type="button"
-          class="btn-cancel-redirect"
-          (click)="closeRedirectModal()"
-        >
-          CANCEL
-        </button>
-
-        <a 
-          [href]="selectedRedirectVersion()?.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-proceed"
-        >
-          PROCEED
-        </a>
-      </div>
-    </div>
-  </div>
-}
