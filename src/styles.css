@@ -27,8 +27,8 @@ button {
 [data-theme='light'] {
   --bg: #e5e8ec;
   --surface: #FBFEF9;
-  --surface-2: #e5e8e88a;
+  --surface-2: #bcc9e1;
   --text: #1A202C;
-  --primary: #D8DBE2;
-  --primary-soft: #d4d1d18a;
+  --primary: #3e7fbb;
+  --primary-soft: #4791d6;
 }

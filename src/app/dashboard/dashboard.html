@@ -26,7 +26,7 @@
     </div>
   </section>
 
-  <section id="projects" class="projects-section">
+  <section id="projects">
     <div class="section-title">
       <span>Projects</span>
     </div>
@@ -39,17 +39,12 @@
             (click)="toggleAccordion(project.id)"
             [attr.aria-expanded]="isAccordionOpen(project.id)"
           >
-            @if (isAccordionOpen(project.id)) {
-              <i class="bi bi-chevron-down"></i>
-            } @else {
-              <i class="bi bi-chevron-right"></i>
-            }
             <div class="wrapper">
               <span class="project-title">{{ project.name }}</span>
 
-              @if (project.url) {
+              @if (project.demoUrl) {
                 <a 
-                  [href]="project.url"
+                  [href]="project.demoUrl"
                   target="_blank"
                   rel="noopener noreferrer"
                   (click)="$event.stopPropagation()"
@@ -59,17 +54,37 @@
                 </a>
               }
             </div>
+            @if (isAccordionOpen(project.id)) {
+              <i class="bi bi-chevron-down"></i>
+            } @else {
+              <i class="bi bi-chevron-left"></i>
+            }
           </div>
           <div class="accordion" [class.open]="isAccordionOpen(project.id)">
             <div class="accordion-inner">
               <div class="accordion-content">
-                <span>Description</span>
-                <p>{{ project.description }}</p>
+                <span class="accordion-section-title">Description</span>
+                <p class="description">{{ project.description }}</p>
+                <span class="accordion-section-title">Tech stack</span>
                 <div class="tech-stack">
-                  <span>Tech stack</span>
-                    @for (tech of project.techStack; track tech.id) {
-                      <p> - {{ tech.name }}</p>
-                    }
+                  @for (tech of project.techStack; track tech.id) {
+                    <span>{{ tech.name }}</span>
+                  }
+                </div>
+                <span class="accordion-section-title">Documentation</span>
+                <div class="doc-links-container">
+                  @for (doc of project.docs; track doc.id) {
+                    <a 
+                      [href]="doc.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      (click)="$event.stopPropagation()"
+                      class="doc-links"
+                    >
+                      {{ doc.name }}
+                      <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  }
                 </div>
               </div>
             </div>
@@ -85,10 +100,75 @@
 
   <section id="contacts" class="contacts-section">
     <div class="section-title">
-      <span>Contact</span>
+      <span>Contact me</span>
     </div>
     <div class="contact-container">
-
+      <div class="contact-card">
+        <i class="bi bi-telephone"></i>
+        <div class="wrapper">
+          <span>(+39) 351 994 3594</span>
+          <button
+            type="button"
+            class="btn-copy"
+            (click)="copyNumber()"
+            [attr.aria-label]="copied() ? 'Number copied' : 'Copy number'"
+          >
+            @if (copied()) {
+              <i class="bi bi-check-lg"></i>
+            } @else {
+              <i class="bi bi-copy"></i>
+            }
+          </button>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-envelope"></i>
+        <div class="wrapper">
+          <span>sionivan09@gmail.com</span>
+          <button
+            type="button"
+            class="btn-copy"
+            (click)="copyEmail()"
+            [attr.aria-label]="emailCopied() ? 'Email copied' : 'Copy email'"
+          >
+            @if (emailCopied()) {
+              <i class="bi bi-check-lg"></i>
+            } @else {
+              <i class="bi bi-copy"></i>
+            }
+          </button>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-linkedin"></i>
+        <div class="wrapper">
+          <span>linkedIn</span>
+          <a 
+            href="https://www.linkedin.com/in/sionivan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BoXgatZcPQVavm6LFXPlZkg%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            (click)="$event.stopPropagation()"
+            class="profile-links"
+          >
+            <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-github"></i>
+        <div class="wrapper">
+          <span>Github</span>
+          <a
+            href="https://github.com/ivanoice09"
+            target="_blank"
+            rel="noopener noreferrer"
+            (click)="$event.stopPropagation()"
+            class="profile-links"
+          >
+            <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </div>

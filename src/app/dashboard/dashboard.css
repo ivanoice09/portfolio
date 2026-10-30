@@ -7,11 +7,14 @@
 }
 
 section {
-  width: 1090px;
+  max-width: 1090px;
   min-height: 100vh;
   padding: 0 1.5rem;
   border-left: 2px solid var(--surface-2);
   border-right: 2px solid var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .section-title {
@@ -24,10 +27,9 @@ section {
 /*               ABOUT ME                 */
 /* ====================================== */
 
+.contacts-section,
 .about-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .intro-photo-wrapper {
@@ -87,13 +89,12 @@ section {
 }
 
 .project-row {
-  width: 100%;
   min-height: 5rem;
 
   border-radius: 8px;
   background-color: var(--surface);
   box-shadow: 3px 3px 5px rgba(82, 82, 82, 0.295);
-  
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -104,7 +105,6 @@ section {
   align-items: center;
   min-height: 5rem;
   transition: background-color 0.3s ease;
-  cursor: pointer;
 }
 
 .project-header:hover {
@@ -114,10 +114,8 @@ section {
 .project-header i {
   font-size: 24px;
   padding: 1rem;
-  margin-left: 0.4rem;
   border-radius: 8px;
 }
-
 
 .project-row .wrapper {
   flex: 1;
@@ -132,18 +130,21 @@ section {
   margin-left: 1rem;
 }
 
+.btn-copy,
 .wrapper a {
   all: unset;
-  margin-right: 1rem;
-  border: 1px solid var(--surface-2);
   border-radius: 8px;
   padding: 10px;
+  background-color: var(--primary);
+  color: azure;
   transition: background-color 0.3s ease;
   font-size: 24px;
+  cursor: pointer;
 }
 
+.btn-copy:hover,
 .wrapper a:hover {
-  background-color: var(--surface);
+  background-color: var(--primary-soft);
 }
 
 .wrapper a i {
@@ -177,27 +178,91 @@ section {
   flex-direction: column;
 }
 
-.accordion-content span {
+.accordion-section-title {
   font-size: 24px;
   font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--surface-2);
 }
 
-.accordion-content p {
+.description,
+.tech-stack {
   font-size: 24px;
   font-weight: 400;
 }
 
-.tech-stack p {
+.tech-stack {
+  padding: 24px 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.tech-stack span {
+  border: 2px solid var(--surface-2);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.doc-links-container {
+  display: flex;
+  padding: 1.5rem 0;
+  gap: 1.5rem;
+}
+
+.doc-links {
+  all: unset;
   font-size: 24px;
   font-weight: 400;
-  margin: 0.8rem 0;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  border: 2px solid var(--surface-2);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.doc-links:hover {
+  background-color: var(--surface-2);
 }
 
 /* ====================================== */
 /*                CONTACT                 */
 /* ====================================== */
 
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3rem;
+}
 
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  min-height: 5rem;
+  border-radius: 8px;
+  background-color: var(--surface);
+  box-shadow: 3px 3px 5px rgba(82, 82, 82, 0.295);
+}
+
+.contact-card .wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-card i,
+.contact-card span {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.btn-copy i {
+  padding: 0px 4.8px;
+}
 
 /* ====================================== */
 /*            MODAL SETTINGS              */
