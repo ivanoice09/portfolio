@@ -50,8 +50,30 @@
   justify-content: center;
   align-items: center;
   margin: 0 20px;
+  gap: 20px;
 }
 
-.left-side button span {
-  color: black;
+.left-side {
+  position: relative;
+}
+
+.btn-nav {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 0.5rem;
+
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.btn-nav:hover {
+  background-color: var(--surface-2);
+}
+
+.btn-nav.active {
+  border-color: var(--surface-2);
 }

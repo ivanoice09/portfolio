@@ -27,6 +27,7 @@ export class Navbar {
   activeSection = signal('');
 
   private handleScroll = () => this.updateActiveSection();
+  
 
   ngAfterViewInit(): void {
     this.updateActiveSection();

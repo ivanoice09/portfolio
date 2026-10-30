@@ -4,12 +4,12 @@
             @for (section of sections; track $index) {
                 <button
                     type="button"
-                    class="dot"
+                    class="btn-nav"
                     [class.active]="activeSection() === section.id"
                     [attr.aria-label]="section.label"
                     (click)="scrollTo(section.id)"
                 >
-                <span>{{ section.label }}</span>
+                    <span>{{ section.label }}</span>
                 </button>
             }
         </div>

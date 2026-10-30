@@ -1,9 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { Project } from '../shared/model/Project';
 import { TechStack } from '../shared/model/TechStack';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
-  imports: [],
+  imports: [Navbar],
   selector: 'app-dashboard',
   styleUrl: './dashboard.css',
   templateUrl: './dashboard.html',
@@ -16,6 +17,12 @@ export class Dashboard {
   copied = signal(false);
   email = 'sionivan09@gmail.com';
   emailCopied = signal(false);
+
+  sections = [
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contacts', label: 'Contacts' },
+  ];
 
   techStackArray: TechStack[] = [
     { id: 1, name: 'Spring Boot', },
