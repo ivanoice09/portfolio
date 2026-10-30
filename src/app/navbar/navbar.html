@@ -1,1 +1,20 @@
-<p>navbar works!</p>
+<div class="nav-space">
+    <nav class="nav-container" [class.scrolled]="isScrolled">
+        <div class="left-side">
+            @for (section of sections; track $index) {
+                <button
+                    type="button"
+                    class="dot"
+                    [class.active]="activeSection() === section.id"
+                    [attr.aria-label]="section.label"
+                    (click)="scrollTo(section.id)"
+                >
+                <span>{{ section.label }}</span>
+                </button>
+            }
+        </div>
+        <div class="right-side">
+            
+        </div>
+    </nav>
+</div>
