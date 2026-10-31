@@ -9,12 +9,13 @@
                     [attr.aria-label]="section.label"
                     (click)="scrollTo(section.id)"
                 >
-                    <span>{{ section.label }}</span>
+                    <span>{{ section.label | translate }}</span>
                 </button>
             }
         </div>
         <div class="right-side">
-            
+            <button type="button" (click)="switchLanguage('en')">EN</button>
+            <button type="button" (click)="switchLanguage('it')">IT</button>
         </div>
     </nav>
 </div>

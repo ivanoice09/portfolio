@@ -1,0 +1,31 @@
+{
+    "headers": {
+        "about": "Chi sono",
+        "projects": "Progetti",
+        "contacts": "Contatti"
+    },
+    "intro": {
+        "subtitle1": "Ciao! Sono Ivan Sion, sviluppatore web full-stack con sede a Milano.",
+        "subtitle2": "Mi piace creare applicazioni user-friendly con codice pulito, manutenibile e un’interfaccia curata.",
+        "subtitle3": "Sono alla ricerca di opportunità per contribuire a prodotti significativi, continuando allo stesso tempo a crescere come sviluppatore."
+    },
+    "description": {
+        "proj1": "Un’applicazione web che semplifica la pianificazione dei turni dei dipendenti. Manager e amministratori possono creare e assegnare turni in modo efficiente, mentre i dipendenti possono consultare facilmente il proprio orario.",
+        "proj2": "Un sito e-commerce per biciclette, sviluppato come progetto formativo durante il mio corso presso Betacom Srl. È stata la mia prima esperienza con Angular e mi ha aiutato a costruire solide basi in ASP.NET Core.",
+        "proj3": "Music Player è la mia prima single-page application, sviluppata con la guida di sviluppatori senior di Selexi Srl. Ispirato a Spotify, mi ha permesso di costruire basi solide nello sviluppo full-stack, concentrandomi sull’esperienza utente e su un codice pulito e ben strutturato.",
+        "proj4": "SplitFive è un’applicazione Android per dividere le spese, sviluppata come progetto finale di gruppo durante il mio corso annuale presso ITS Angelo Rizzoli. Lavorare fuori dal mio ambito abituale mi ha insegnato ad adattarmi alle esigenze del cliente, rispettare le scadenze e collaborare efficacemente in team."
+    },
+    "sub-headers": {
+        "description": "Descrizione",
+        "tech-stack": "Tecnologie utilizzate",
+        "documentation": "Documentazione"
+    },
+    "documentation-type": {
+        "docs": "Documentazione completa",
+        "src-code-be": "Codice sorgente backend",
+        "src-code-fe": "Codice sorgente frontend"
+    },
+    "demo-button": {
+    "link": "Prova"
+    }
+}

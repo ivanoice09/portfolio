@@ -1,5 +1,5 @@
 export interface Documentation {
     id: number,
-    name: string,
+    nameKey: string,
     url: string,
 }

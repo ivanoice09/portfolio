@@ -3,20 +3,14 @@
 
   <section id="about" class="about-section">
     <div class="section-title">
-      <span>About</span>
+      <span>{{ 'headers.about' | translate }}</span>
     </div>
     <div class="intro-photo-wrapper">
       
       <div class="intro">
-        <p>Hi, I’m <span style="font-weight: bold;">Ivan Sion</span>, a full-stack web developer based in Milan.</p>
-        <p>
-          I enjoy building user-friendly applications with clean, maintainable code and thoughtful
-          UI design.
-        </p>
-        <p>
-          I’m looking for opportunities to contribute to meaningful products while continuing to
-          grow as a developer.
-        </p>
+        <p>{{ 'intro.subtitle1' | translate }}</p>
+        <p>{{ 'intro.subtitle2' | translate }}</p>
+        <p>{{ 'intro.subtitle3' | translate }}</p>
       </div>
       
       <div class="photo-container">
@@ -29,7 +23,7 @@
 
   <section id="projects">
     <div class="section-title">
-      <span>Projects</span>
+      <span>{{ 'headers.contacts' | translate }}</span>
     </div>
 
     <div class="project-list">
@@ -43,14 +37,14 @@
             <div class="wrapper">
               <span class="project-title">{{ project.name }}</span>
 
-              @if (project.demoUrl) {
+              @if (project.demoUrlKey) {
                 <a 
-                  [href]="project.demoUrl"
+                  [href]="project.demoUrlKey"
                   target="_blank"
                   rel="noopener noreferrer"
                   (click)="$event.stopPropagation()"
                 >
-                  <span>View site</span>
+                  <span>{{ 'demo-button.link' | translate }}</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
               }
@@ -65,11 +59,11 @@
             <div class="accordion-inner">
               <div class="accordion-content">
                 <span class="accordion-section-title">Description</span>
-                <p class="description">{{ project.description }}</p>
+                <p class="description">{{ project.descriptionKey }}</p>
                 <span class="accordion-section-title">Tech stack</span>
                 <div class="tech-stack">
-                  @for (tech of project.techStack; track tech.id) {
-                    <span>{{ tech.name }}</span>
+                  @for (tech of project.techStackKey; track tech.id) {
+                    <span>{{ tech.nameKey }}</span>
                   }
                 </div>
                 <span class="accordion-section-title">Documentation</span>
@@ -82,7 +76,7 @@
                       (click)="$event.stopPropagation()"
                       class="doc-links"
                     >
-                      {{ doc.name }}
+                      {{ doc.nameKey }}
                       <i class="bi bi-arrow-up-right"></i>
                     </a>
                   }
@@ -97,7 +91,7 @@
 
   <section id="contacts" class="contacts-section">
     <div class="section-title">
-      <span>Contact me</span>
+      <span>{{ 'headers.contacts' | translate }}</span>
     </div>
     <div class="contact-container">
       <div class="contact-card">

@@ -1,4 +1,5 @@
-import { Component, HostListener, Input, signal } from '@angular/core';
+import { Component, HostListener, inject, Input, signal } from '@angular/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 export interface ScrollSection {
   id: string;
@@ -7,7 +8,7 @@ export interface ScrollSection {
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
   host: {
@@ -15,12 +16,9 @@ export interface ScrollSection {
   }
 })
 export class Navbar {
-  isScrolled = false;
+  private translate = inject(TranslateService);
 
-  @HostListener('window:scroll')
-  onWindowScroll(): void {
-    this.isScrolled = window.scrollY > 0;
-  }
+  isScrolled = false;
 
   @Input({ required: true }) sections: ScrollSection[] = [];
 
@@ -28,7 +26,6 @@ export class Navbar {
 
   private handleScroll = () => this.updateActiveSection();
   
-
   ngAfterViewInit(): void {
     this.updateActiveSection();
 
@@ -83,5 +80,15 @@ export class Navbar {
     });
 
     window.removeEventListener('resize', this.handleScroll);
+  }
+
+  switchLanguage(lang: 'en' | 'it') {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.isScrolled = window.scrollY > 0;
   }
 }

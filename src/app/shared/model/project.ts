@@ -4,8 +4,8 @@ import { TechStack } from "./TechStack";
 export interface Project {
     id: number,
     name: string,
-    description?: string,
-    demoUrl?: string,
-    techStack?: TechStack[],
+    descriptionKey?: string,
+    demoUrlKey?: string,
+    techStackKey?: TechStack[],
     docs: Documentation[],
 }
