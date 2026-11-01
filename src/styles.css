@@ -1,5 +1,14 @@
-html {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -22,6 +31,13 @@ button {
   font-size: 100%;
   font-weight: inherit;
   color: inherit;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 :root,

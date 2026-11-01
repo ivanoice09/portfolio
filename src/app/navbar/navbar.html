@@ -14,8 +14,22 @@
             }
         </div>
         <div class="right-side">
-            <button type="button" (click)="switchLanguage('en')">EN</button>
-            <button type="button" (click)="switchLanguage('it')">IT</button>
+            <div class="lang-toggler">
+                <button 
+                    type="button" 
+                    [class.active]="activeLanguage() === 'en'"
+                    (click)="switchLanguage('en')"
+                >
+                    EN
+                </button>
+                <button 
+                    type="button"
+                    [class.active]="activeLanguage() === 'it'"
+                    (click)="switchLanguage('it')"
+                >
+                    IT
+                </button>
+            </div>
         </div>
     </nav>
 </div>

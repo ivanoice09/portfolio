@@ -43,23 +43,23 @@ export class Dashboard {
     {
       id: 1,
       name: 'Employee Scheduler',
-      descriptionKey: 'A web application that simplifies employee shift scheduling. Managers and admins can create and assign shifts efficiently, while employees can easily view their schedules.',
+      descriptionKey: 'description.proj1',
       demoUrlKey: 'https://modernswiftshifter.netlify.app',
       techStackKey: this.techStackArray.filter((tech) => [1, 2, 3].includes(tech.id)),
       docs: [
         {
           id: 1,
-          nameKey: 'Full Documentation',
+          nameKey: 'doc-type.docs',
           url: 'https://github.com/ivanoice09/employee-scheduler-docs',
         },
         {
           id: 2,
-          nameKey: 'Backend source code',
+          nameKey: 'doc-type.src-code-be',
           url: 'https://github.com/ivanoice09/employee-scheduler',
         },
         {
           id: 3,
-          nameKey: 'Frontend source code',
+          nameKey: 'doc-type.src-code-fe',
           url: 'https://github.com/ivanoice09/employee-scheduler-fe',
         }
       ],
@@ -67,22 +67,22 @@ export class Dashboard {
     {
       id: 2,
       name: 'Bike E-commerce',
-      descriptionKey: 'An e-commerce website for bicycles, built as a training project during my course at Betacom Srl. It was my first experience with Angular and helped me develop a strong foundation in ASP.NET Core.',
+      descriptionKey: 'description.proj2',      
       techStackKey: this.techStackArray.filter((tech) => [4, 2, 5].includes(tech.id)),
       docs: [
         {
           id: 1,
-          nameKey: 'Wireframe with Docs',
+          nameKey: 'doc-type.wireframe',
           url: 'https://www.figma.com/board/XodZIIm4LohMG02AyWJ18w/Ciclilavarizia-MILAN?t=nKcUFOKPEWXiXGFi-1',
         },
         {
           id: 2,
-          nameKey: 'Backend source code',
+          nameKey: 'doc-type.src-code-be',
           url: 'https://github.com/Ciclilavarizia-dev/cl_be',
         },
         {
           id: 3,
-          nameKey: 'Frontend source code',
+          nameKey: 'doc-type.src-code-fe',
           url: 'https://github.com/Ciclilavarizia-dev/cl_fe',
         }
       ]
@@ -90,12 +90,12 @@ export class Dashboard {
     {
       id: 3,
       name: 'Music Player',
-      descriptionKey: 'Music Player is my first single-page application, developed with guidance from senior developers at Selexi Srl. Inspired by Spotify, it helped me build a foundation in full-stack development while focusing on user experience and clean, well-structured code.',
+      descriptionKey: 'description.proj3',
       techStackKey: this.techStackArray.filter((tech) => [7, 8, 9, 6].includes(tech.id)),
       docs: [
         {
           id: 1,
-          nameKey: 'Source code',
+          nameKey: 'doc-type.src-code',
           url: 'https://github.com/ivanoice09/music-player',
         },
       ],
@@ -103,12 +103,12 @@ export class Dashboard {
     {
       id: 4,
       name: 'Splityfive',
-      descriptionKey: 'SplitFive is an Android expense-splitting application developed as a final group project during my one-year course at ITS Angelo Rizzoli. Working outside my usual skill set taught me to adapt to client requirements, meet deadlines, and collaborate effectively within a team.',
+      descriptionKey: 'description.proj4',
       techStackKey: this.techStackArray.filter((tech) => [10, 11].includes(tech.id)),
       docs: [
         {
           id: 1,
-          nameKey: 'Source code & docs',
+          nameKey: 'doc-type.src-code',
           url: 'https://github.com/Progetto-android/Splityfive', 
         },
       ],

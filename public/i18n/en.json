@@ -20,10 +20,12 @@
         "tech-stack": "Tech stack",
         "documentation": "Documentation"
     },
-    "documentation-type": {
+    "doc-type": {
         "docs": "Full documentation",
+        "src-code": "Source code",
         "src-code-be": "Backend source code",
-        "src-code-fe": "Frontend source code"
+        "src-code-fe": "Frontend source code",
+        "wireframe": "Wireframe with documentation"
     },
     "demo-button": {
         "link": "View site"

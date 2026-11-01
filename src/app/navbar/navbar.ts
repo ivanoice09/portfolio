@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, Input, signal } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 export interface ScrollSection {
@@ -23,6 +23,7 @@ export class Navbar {
   @Input({ required: true }) sections: ScrollSection[] = [];
 
   activeSection = signal('');
+  activeLanguage = signal('');
 
   private handleScroll = () => this.updateActiveSection();
   
@@ -85,6 +86,7 @@ export class Navbar {
   switchLanguage(lang: 'en' | 'it') {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
+    this.activeLanguage.set(lang);
   }
 
   @HostListener('window:scroll')

@@ -5,9 +5,10 @@
 }
 
 section {
+  width: 100%;
   max-width: 1090px;
   min-height: 100vh;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   border-left: 2px solid var(--surface-2);
   border-right: 2px solid var(--surface-2);
   display: flex;
@@ -16,10 +17,10 @@ section {
 }
 
 .section-title {
-  font-size: 3.5rem;
-  font-weight: 500;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ====================================== */
@@ -33,15 +34,16 @@ section {
 
 .intro-photo-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
   justify-content: space-between;
-  /* border-radius: 8px; */
-  /* background-color: transparent; */
-  /* box-shadow: 0 3px 5px rgba(82, 82, 82, 0.295); */
+  width: 100%;
 }
 
 .intro {
+  width: 100%;
   text-align: left;
-  width: 540px;
+  max-width: 540px;
 }
 
 .intro p {
@@ -56,8 +58,10 @@ section {
 }
 
 .photo-frame {
-  width: 480px;
-  height: 400px;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 6 / 5;
+  height: auto;
   overflow: hidden;
   border-radius: 7px;
   box-shadow: 3px 6px 2px rgba(82, 82, 82, 0.295);
@@ -263,5 +267,65 @@ section {
 }
 
 /* ====================================== */
-/*            MODAL SETTINGS              */
+/*         RESPONSIVENESS SETTINGS        */
 /* ====================================== */
+
+/* Base styles above are for phones */
+
+/* Large phones and small tablets */
+@media (min-width: 640px) {
+  section {
+    padding: 0 1.5rem;
+  }
+
+  .intro-photo-wrapper {
+    flex-wrap: nowrap;
+  }
+
+  .intro {
+    width: 50%;
+    max-width: 540px;
+  }
+
+  .photo-container {
+    width: 45%;
+  }
+
+  .photo-frame {
+    max-width: none;
+  }
+  
+  .photo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Zoom level: 1 = normal, 1.5 = 50% larger */
+    transform: scale(2.4);
+
+    /* Choose which part of the image stays in view */
+    object-position: 50% -130px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3rem;
+  }
+
+  .intro p {
+    font-size: 1.75rem;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+
+  .intro p {
+    font-size: 2rem;
+  }
+}

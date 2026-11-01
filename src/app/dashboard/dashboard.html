@@ -58,15 +58,15 @@
           <div class="accordion" [class.open]="isAccordionOpen(project.id)">
             <div class="accordion-inner">
               <div class="accordion-content">
-                <span class="accordion-section-title">Description</span>
-                <p class="description">{{ project.descriptionKey }}</p>
-                <span class="accordion-section-title">Tech stack</span>
+                <span class="accordion-section-title">{{ 'sub-headers.description' | translate}}</span>
+                <p class="description">{{ project.descriptionKey | translate }}</p>
+                <span class="accordion-section-title">{{ 'sub-headers.tech-stack' | translate }}</span>
                 <div class="tech-stack">
                   @for (tech of project.techStackKey; track tech.id) {
                     <span>{{ tech.nameKey }}</span>
                   }
                 </div>
-                <span class="accordion-section-title">Documentation</span>
+                <span class="accordion-section-title">{{ 'sub-headers.documentation' | translate }}</span>
                 <div class="doc-links-container">
                   @for (doc of project.docs; track doc.id) {
                     <a 
@@ -76,7 +76,7 @@
                       (click)="$event.stopPropagation()"
                       class="doc-links"
                     >
-                      {{ doc.nameKey }}
+                      {{ doc.nameKey | translate }}
                       <i class="bi bi-arrow-up-right"></i>
                     </a>
                   }
