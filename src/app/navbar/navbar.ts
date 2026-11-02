@@ -1,8 +1,8 @@
 import { Component, HostListener, inject, Input, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { ScrollSection } from '../shared/model/ScrollSection';
 import { SectionNavigationService } from '../shared/service/section-navigation-service';
-import { SlideNavbar } from '../../slide-navbar/slide-navbar';
+import { SlideNavbar } from '../slide-navbar/slide-navbar';
+import { ScrollSection } from '../shared/model/scroll-section';
 
 @Component({
   selector: 'app-navbar',

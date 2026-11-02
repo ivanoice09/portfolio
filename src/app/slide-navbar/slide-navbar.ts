@@ -1,7 +1,9 @@
 import { Component, effect, inject, Input, input, output, signal } from '@angular/core';
-import { ScrollSection } from '../app/shared/model/ScrollSection';
-import { SectionNavigationService } from '../app/shared/service/section-navigation-service';
+
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+
+import { SectionNavigationService } from '../shared/service/section-navigation-service';
+import { ScrollSection } from '../shared/model/scroll-section';
 
 @Component({
   imports: [TranslatePipe],

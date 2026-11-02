@@ -1,5 +1,5 @@
-import { Documentation } from "./Documentation";
-import { TechStack } from "./TechStack";
+import { Documentation } from "./documentation";
+import { TechStack } from "./tech-stack";
 
 export interface Project {
     id: number,
@@ -8,4 +8,4 @@ export interface Project {
     demoUrlKey?: string,
     techStackKey?: TechStack[],
     docs: Documentation[],
-}
+}   

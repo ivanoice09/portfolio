@@ -1,5 +1,5 @@
 import { Service, signal } from '@angular/core';
-import { ScrollSection } from '../model/ScrollSection';
+import { ScrollSection } from '../model/scroll-section';
 
 @Service()
 export class SectionNavigationService {

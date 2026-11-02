@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnDestroy, signal } from '@angular/core';
-import { Project } from '../shared/model/Project';
-import { TechStack } from '../shared/model/TechStack';
 import { Navbar } from '../navbar/navbar';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SectionNavigationService } from '../shared/service/section-navigation-service';
+import { TechStack } from '../shared/model/tech-stack';
+import { Project } from '../shared/model/project';
 
 @Component({
   imports: [Navbar, TranslatePipe],
