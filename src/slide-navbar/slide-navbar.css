@@ -1,0 +1,104 @@
+.slide-navbar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 999;
+}
+
+.slide-navbar-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slide-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(70vw, 360px);
+  background: var(--bg);
+  color: #f9fafb;
+  padding: 1.5rem 1.25rem;
+  /* box-shadow: -8px 0 24px rgba(0, 0, 0, 0.35); */
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-navbar.open {
+  transform: translateX(0);
+}
+
+.close-button {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.slide-navbar ul {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lang-toggler {
+  margin-top: 5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-section {
+  color: var(--text);
+  font-size: 2.3rem;
+  font-weight: 500;
+  background: none;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.btn-section.active {
+  border-color: var(--surface-2);
+}
+
+.slide-navbar a:hover,
+.slide-navbar a:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-toggler button {
+  color: var(--text);
+  width: 45px;
+  font-size: 2rem;
+  width: auto;
+  padding: auto;
+  background: none;
+  border: 3px solid transparent;
+  border-radius: 8px;
+}
+
+.lang-toggler button.active {
+  border-color: var(--surface-2);
+}
+
+/* Show only on phones and small screens */
+@media (min-width: 768px) {
+  .slide-navbar,
+  .slide-navbar-backdrop {
+    display: none;
+  }
+}

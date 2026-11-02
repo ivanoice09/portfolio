@@ -76,7 +76,6 @@
 }
 
 .lang-toggler button {
-  width: 45px;
   font-size: 20px;
 }
 
@@ -90,9 +89,48 @@
   border-color: var(--surface-2);
 }
 
+.btn-burger {
+  display: none;
+  align-self: center;
+  margin: 0.3rem 0.3rem 0 0;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--surface);
+  border: none;
+  border-radius: 50px;
+}
+
 @media (max-width: 640px) {
   .left-side, 
   .right-side {
     display: none;
+  }
+
+  :host {
+    top: 0.1rem;
+    margin-right: 2px;
+  }
+
+  :host(.scrolled) {
+    box-shadow: none;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: end;
+    background: none;
+    box-shadow: none;
+    min-height: 0;
+  }
+
+  .btn-burger {
+    display: block;
+    background-color: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 4px 7px rgb(0 0 0 / 15%);
+  }
+
+  .btn-burger i {
+    font-size: 2rem;
+    color: var(--text);
   }
 }

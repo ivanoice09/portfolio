@@ -1,8 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnDestroy, signal } from '@angular/core';
 import { Project } from '../shared/model/Project';
 import { TechStack } from '../shared/model/TechStack';
 import { Navbar } from '../navbar/navbar';
 import { TranslatePipe } from '@ngx-translate/core';
+import { SectionNavigationService } from '../shared/service/section-navigation-service';
 
 @Component({
   imports: [Navbar, TranslatePipe],
@@ -12,12 +13,14 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Dashboard {
+export class Dashboard implements AfterViewInit, OnDestroy {
 
   phoneNumber = '351 994 3594';
   copied = signal(false);
   email = 'sionivan09@gmail.com';
   emailCopied = signal(false);
+
+  private readonly sectionNavigation = inject(SectionNavigationService);
 
   sections = [
     { id: 'about', label: 'headers.about' },
@@ -114,6 +117,15 @@ export class Dashboard {
       ],
     },
   ];
+
+  ngAfterViewInit(): void {
+    this.sectionNavigation.setSections(this.sections);
+    this.sectionNavigation.startTracking();
+  }
+
+  ngOnDestroy(): void {
+    this.sectionNavigation.stopTracking();
+  }
 
   openProjectId = signal<number | null>(null);
 

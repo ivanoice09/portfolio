@@ -31,5 +31,17 @@
                 </button>
             </div>
         </div>
+        <button 
+            type="button" 
+            class="btn-burger"
+            (click)="openSlideNavbar()"
+        >
+            <i class="bi bi-list"></i>
+        </button>
     </nav>
 </div>
+<app-slide-navbar 
+    [sections]="sections"
+    [open]="isSlideNavbarOpen()"
+    (closed)="closeSlideNavbar()"
+/>
