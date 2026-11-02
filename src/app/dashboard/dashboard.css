@@ -128,7 +128,7 @@ section {
 
 .project-title {
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-left: 1rem;
 }
 
@@ -193,13 +193,15 @@ section {
 
 .description,
 .tech-stack {
-  font-size: 24px;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
 .tech-stack {
   padding: 24px 0;
   display: flex;
+  flex-direction: column;
+  text-align: center;
   gap: 1.5rem;
 }
 
@@ -211,13 +213,14 @@ section {
 
 .doc-links-container {
   display: flex;
+  flex-direction: column;
   padding: 1.5rem 0;
   gap: 1.5rem;
 }
 
 .doc-links {
   all: unset;
-  font-size: 24px;
+  font-size: 1.4rem;
   font-weight: 400;
   border-radius: 8px;
   background-color: transparent;
@@ -298,7 +301,7 @@ section {
   .photo-frame {
     max-width: none;
   }
-  
+
   .photo-image {
     /* Zoom level: 1 = normal, 1.5 = 50% larger */
     transform: scale(2.4);
@@ -308,9 +311,12 @@ section {
   }
 
   .project-title {
-    font-size: 2rem;
-    font-weight: 400;
-    margin-left: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .description,
+  .tech-stack {
+    font-size: 1.6rem;
   }
 
   .wrapper a span {
@@ -323,7 +329,17 @@ section {
     font-weight: 400;
   }
 
+  .tech-stack {
+    flex-direction: row;
+  }
 
+  .doc-links-container {
+    flex-direction: row;
+  }
+
+  .doc-links {
+    font-size: 1.6rem;
+  }
 }
 
 /* Tablets */

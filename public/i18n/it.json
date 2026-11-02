@@ -5,7 +5,7 @@
         "contacts": "Contatti"
     },
     "intro": {
-        "subtitle1": "Ciao! Sono Ivan Sion, sviluppatore web full-stack con sede a Milano.",
+        "subtitle1": "Ciao! Sono Ivan Sion, sviluppatore web full-stack residente a Milano.",
         "subtitle2": "Creo applicazioni user-friendly con codice pulito, manutenibile e un’interfaccia curata.",
         "subtitle3": "Sono alla ricerca di opportunità per contribuire a prodotti significativi, continuando allo stesso tempo a crescere come sviluppatore."
     },
@@ -21,11 +21,11 @@
         "documentation": "Documentazione"
     },
     "doc-type": {
-        "docs": "Documentazione completa",
+        "docs": "Dettagli",
         "src-code": "Codice",
         "src-code-be": "Codice backend",
         "src-code-fe": "Codice frontend",
-        "wireframe": "Wireframe/Documentazione"
+        "wireframe": "Wireframe"
     },
     "demo-button": {
         "link": "Prova"

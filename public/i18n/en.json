@@ -21,11 +21,11 @@
         "documentation": "Documentation"
     },
     "doc-type": {
-        "docs": "Full documentation",
+        "docs": "Details",
         "src-code": "Source code",
         "src-code-be": "Backend source code",
         "src-code-fe": "Frontend source code",
-        "wireframe": "Wireframe with documentation"
+        "wireframe": "Wireframe"
     },
     "demo-button": {
         "link": "View site"
