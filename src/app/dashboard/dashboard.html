@@ -1,142 +1,165 @@
 <div class="dashboard-container">
-  <app-sidenav [sections]="sections" />
-
-  <section id="about" class="dashboard-section">
-
+  <app-navbar [sections]="sections" />
+  
+  <section id="about" class="about-section">
     <div class="section-title">
-      <span>ABOUT</span>
+      <span>{{ 'headers.about' | translate }}</span>
     </div>
-
-    <div class="intro-wrapper">
+    <div class="intro-photo-wrapper">
+      
       <div class="intro">
-        <p>Hi, I’m Ivan Sion, a full-stack web developer based in Milan.</p>
-        <p>
-          I enjoy building user-friendly applications with clean, maintainable code and thoughtful
-          UI design.
-        </p>
-        <p>
-          I’m looking for opportunities to contribute to meaningful products while continuing to
-          grow as a developer.
-        </p>
+        <p>{{ 'intro.subtitle1' | translate }}</p>
+        <p>{{ 'intro.subtitle2' | translate }}</p>
+        <p>{{ 'intro.subtitle3' | translate }}</p>
       </div>
-
-      <div class="photo-frame">
-        <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
-      </div>
-    </div>
-
-  </section>
-
-  <section id="projects" class="dashboard-section">
-    <div class="section-title">
-      <span>PROJECTS</span>
-    </div>
-
-      <swiper-container
-          [slidesPerView]="1"
-          [centeredSlides]="true"
-          [navigation]="true"
-          [keyboard]="true"
-          class="project-list"
-      >
-        @for (project of projects; track project.id) {
-          <swiper-slide>
-            <app-project-card 
-              [project]="project"
-              (openRedirect)="openRedirectModal($event)"
-            />
-          </swiper-slide>          
-        }
-      </swiper-container>
-  </section>
-
-  <section id="contacts" class="dashboard-section">
-      <div class="section-title">
-        <span>CONTACT</span>
-      </div>
-      <div class="contact-container">
-        <div class="contact-card">
-          <div class="contact-list">
-            <button
-              type="button"
-              (click)="copyNumber()"
-              [attr.aria-label]="copied() ? 'Number copied' : 'Copy number'"
-            >
-              <i class="bi bi-telephone"></i>
-              <span>(+39) {{ phoneNumber }}</span>
-              @if (copied()) {
-                <i class="bi bi-check-lg"></i>
-              } @else {
-                <i class="bi bi-copy"></i>
-              }
-            </button>
-            <button
-              type="button"
-              (click)="copyEmail()"
-              [attr.aria-label]="emailCopied() ? 'Email copied' : 'Copy email'"
-            >
-              <i class="bi bi-envelope"></i>
-              <span>{{ email }}</span>
-              @if (emailCopied()) {
-                <i class="bi bi-check-lg"></i>
-              } @else {
-                <i class="bi bi-copy"></i>
-              }
-            </button>
-            <a
-              href="https://www.linkedin.com/in/sionivan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FAEC32KYRl%2BioGmNF9gJ%2Bw%3D%3D" 
-              target="_blank"
-              rel="noopener noreferrer"
-              class="linkedIn"
-            >
-              <i class="bi bi-linkedin"></i>
-              <span>LinkedIn</span>
-              <i class="bi bi-link"></i>
-            </a>
-            <a 
-              href="https://github.com/ivanoice09"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="github"
-            >
-              <i class="bi bi-github"></i>
-              <span>Github</span>
-              <i class="bi bi-link"></i>
-            </a>
-          </div>
+      
+      <div class="photo-container">
+        <div class="photo-frame">
+          <img src="/images/IMG_2944.jpg" alt="profile-pic" class="photo-image" />
         </div>
       </div>
+    </div>
   </section>
-</div>
 
-<!-- MODAL CONFIRM REDIRECT LIVE DEMO -->
-@if (isRedirectModalOpen(); as selectedVersion) {
-  <div class="modal-backdrop" (click)="closeRedirectModal()">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Attention</h2>
-      </div>
-      <div class="modal-container">
-        <p>You're about to be redirected to a live demonstration of this project.</p>
-      </div>
-      <div class="modal-actions">
-        <button
-          type="button"
-          class="btn-cancel-redirect"
-          (click)="closeRedirectModal()"
-        >
-          CANCEL
-        </button>
+  <section id="projects">
+    <div class="section-title">
+      <span>{{ 'headers.projects' | translate }}</span>
+    </div>
 
-        <a 
-          [href]="selectedRedirectVersion()?.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-proceed"
-        >
-          PROCEED
-        </a>
+    <div class="project-list">
+      @for (project of projects; track project.id) {
+        <div class="project-row">
+          <div 
+            class="project-header"
+            (click)="toggleAccordion(project.id)"
+            [attr.aria-expanded]="isAccordionOpen(project.id)"
+          >
+            <div class="wrapper">
+              <span class="project-title">{{ project.name }}</span>
+
+              @if (project.demoUrlKey) {
+                <a 
+                  [href]="project.demoUrlKey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  (click)="$event.stopPropagation()"
+                >
+                  <span>{{ 'demo-button.link' | translate }}</span>
+                  <i class="bi bi-arrow-up-right"></i>
+                </a>
+              }
+            </div>
+            @if (isAccordionOpen(project.id)) {
+              <i class="bi bi-chevron-down"></i>
+            } @else {
+              <i class="bi bi-chevron-left"></i>
+            }
+          </div>
+          <div class="accordion" [class.open]="isAccordionOpen(project.id)">
+            <div class="accordion-inner">
+              <div class="accordion-content">
+                <span class="accordion-section-title">{{ 'sub-headers.description' | translate}}</span>
+                <p class="description">{{ project.descriptionKey | translate }}</p>
+                <span class="accordion-section-title">{{ 'sub-headers.tech-stack' | translate }}</span>
+                <div class="tech-stack">
+                  @for (tech of project.techStackKey; track tech.id) {
+                    <span>{{ tech.nameKey }}</span>
+                  }
+                </div>
+                <span class="accordion-section-title">{{ 'sub-headers.documentation' | translate }}</span>
+                <div class="doc-links-container">
+                  @for (doc of project.docs; track doc.id) {
+                    <a 
+                      [href]="doc.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      (click)="$event.stopPropagation()"
+                      class="doc-links"
+                    >
+                      {{ doc.nameKey | translate }}
+                      <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section id="contacts" class="contacts-section">
+    <div class="section-title">
+      <span>{{ 'headers.contacts' | translate }}</span>
+    </div>
+    <div class="contact-container">
+      <div class="contact-card">
+        <i class="bi bi-telephone"></i>
+        <div class="wrapper">
+          <span>(+39) 351 994 3594</span>
+          <button
+            type="button"
+            class="btn-copy"
+            (click)="copyNumber()"
+            [attr.aria-label]="copied() ? 'Number copied' : 'Copy number'"
+          >
+            @if (copied()) {
+              <i class="bi bi-check-lg"></i>
+            } @else {
+              <i class="bi bi-copy"></i>
+            }
+          </button>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-envelope"></i>
+        <div class="wrapper">
+          <span>sionivan09@gmail.com</span>
+          <button
+            type="button"
+            class="btn-copy"
+            (click)="copyEmail()"
+            [attr.aria-label]="emailCopied() ? 'Email copied' : 'Copy email'"
+          >
+            @if (emailCopied()) {
+              <i class="bi bi-check-lg"></i>
+            } @else {
+              <i class="bi bi-copy"></i>
+            }
+          </button>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-linkedin"></i>
+        <div class="wrapper">
+          <span>linkedIn</span>
+          <a 
+            href="https://www.linkedin.com/in/sionivan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BoXgatZcPQVavm6LFXPlZkg%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            (click)="$event.stopPropagation()"
+            class="profile-links"
+          >
+            <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-github"></i>
+        <div class="wrapper">
+          <span>Github</span>
+          <a
+            href="https://github.com/ivanoice09"
+            target="_blank"
+            rel="noopener noreferrer"
+            (click)="$event.stopPropagation()"
+            class="profile-links"
+          >
+            <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-}
+  </section>
+</div>

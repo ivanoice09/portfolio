@@ -1,73 +1,142 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { Sidenav } from '../sidenav/sidenav';
-import { Project, ProjectVersion } from '../shared/model/project';
-import { ProjectCard } from '../project-card/project-card';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnDestroy, signal } from '@angular/core';
+import { Project } from '../shared/model/Project';
+import { TechStack } from '../shared/model/TechStack';
+import { Navbar } from '../navbar/navbar';
+import { TranslatePipe } from '@ngx-translate/core';
+import { SectionNavigationService } from '../shared/service/section-navigation-service';
 
 @Component({
-  imports: [Sidenav, ProjectCard],
+  imports: [Navbar, TranslatePipe],
   selector: 'app-dashboard',
   styleUrl: './dashboard.css',
   templateUrl: './dashboard.html',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Dashboard {
-
-  readonly isRedirectModalOpen = signal(false);
-  readonly selectedRedirectVersion = signal<ProjectVersion | null>(null);
-  readonly isDisabled = signal(true);
+export class Dashboard implements AfterViewInit, OnDestroy {
 
   phoneNumber = '351 994 3594';
   copied = signal(false);
   email = 'sionivan09@gmail.com';
   emailCopied = signal(false);
 
+  private readonly sectionNavigation = inject(SectionNavigationService);
+
   sections = [
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contacts', label: 'Contacts' },
+    { id: 'about', label: 'headers.about' },
+    { id: 'projects', label: 'headers.projects' },
+    { id: 'contacts', label: 'headers.contacts' },
+  ];
+
+  techStackArray: TechStack[] = [
+    { id: 1, nameKey: 'Spring Boot', },
+    { id: 2, nameKey: 'Angular', },
+    { id: 3, nameKey: 'PostgreSQL', },
+    { id: 4, nameKey: 'ASP.NET Core', },
+    { id: 5, nameKey: 'Microsoft SQL Server', },
+    { id: 6, nameKey: 'JavaScript', },
+    { id: 7, nameKey: 'PHP', },
+    { id: 8, nameKey: 'HTML', },
+    { id: 9, nameKey: 'CSS', },
+    { id: 10, nameKey: 'Kotlin', },
+    { id: 11, nameKey: 'Android SDK', },
   ];
 
   projects: Project[] = [
     {
-      id: 'employee-scheduler',
-      title: 'EMPLOYEE SCHEDULER',
-      description:
-        'A web application that simplifies employee shift scheduling. Managers and admins can create and assign shifts efficiently, while employees can easily view their schedules.',
-      documentation: 'https://github.com/ivanoice09/employee-scheduler-docs',
-      sourceCodeBe: 'https://github.com/ivanoice09/employee-scheduler',
-      sourceCodeFe: 'https://github.com/ivanoice09/employee-scheduler-fe',
-      versions: [
+      id: 1,
+      name: 'Employee Scheduler',
+      descriptionKey: 'description.proj1',
+      demoUrlKey: 'https://modernswiftshifter.netlify.app',
+      techStackKey: this.techStackArray.filter((tech) => [1, 2, 3].includes(tech.id)),
+      docs: [
         {
-          label: 'modern-ui',
-          url: 'https://modernswiftshifter.netlify.app',
-          active: true,
+          id: 1,
+          nameKey: 'doc-type.docs',
+          url: 'https://github.com/ivanoice09/employee-scheduler-docs',
         },
         {
-          label: 'traditional',
-          url: 'https://swiftshifter.netlify.app',
-          active: false,
+          id: 2,
+          nameKey: 'doc-type.src-code-be',
+          url: 'https://github.com/ivanoice09/employee-scheduler',
+        },
+        {
+          id: 3,
+          nameKey: 'doc-type.src-code-fe',
+          url: 'https://github.com/ivanoice09/employee-scheduler-fe',
+        }
+      ],
+    },
+    {
+      id: 2,
+      name: 'Bike E-commerce',
+      descriptionKey: 'description.proj2',      
+      techStackKey: this.techStackArray.filter((tech) => [4, 2, 5].includes(tech.id)),
+      docs: [
+        {
+          id: 1,
+          nameKey: 'doc-type.wireframe',
+          url: 'https://www.figma.com/board/XodZIIm4LohMG02AyWJ18w/Ciclilavarizia-MILAN?t=nKcUFOKPEWXiXGFi-1',
+        },
+        {
+          id: 2,
+          nameKey: 'doc-type.src-code-be',
+          url: 'https://github.com/Ciclilavarizia-dev/cl_be',
+        },
+        {
+          id: 3,
+          nameKey: 'doc-type.src-code-fe',
+          url: 'https://github.com/Ciclilavarizia-dev/cl_fe',
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: 'Music Player',
+      descriptionKey: 'description.proj3',
+      techStackKey: this.techStackArray.filter((tech) => [7, 8, 9, 6].includes(tech.id)),
+      docs: [
+        {
+          id: 1,
+          nameKey: 'doc-type.src-code',
+          url: 'https://github.com/ivanoice09/music-player',
         },
       ],
     },
     {
-      id: 'bike-ecommerce',
-      title: 'BIKE ECOMMERCE',
-      description: 'An e-commerce website for bicycles, built as a training project during my course at Betacom Srl. It was my first experience with Angular and helped me develop a strong foundation in ASP.NET Core.',
-      documentation: 'https://www.figma.com/board/XodZIIm4LohMG02AyWJ18w/Ciclilavarizia-MILAN?t=CgBAgLDHB7uhXPjX-1',
-      sourceCodeBe: 'https://github.com/Ciclilavarizia-dev/cl_be',
-      sourceCodeFe: 'https://github.com/Ciclilavarizia-dev/cl_fe',
-      versions: [],
-    }
+      id: 4,
+      name: 'Splityfive',
+      descriptionKey: 'description.proj4',
+      techStackKey: this.techStackArray.filter((tech) => [10, 11].includes(tech.id)),
+      docs: [
+        {
+          id: 1,
+          nameKey: 'doc-type.src-code',
+          url: 'https://github.com/Progetto-android/Splityfive', 
+        },
+      ],
+    },
   ];
 
-  openRedirectModal(version: ProjectVersion): void {
-    this.selectedRedirectVersion.set(version);
-    this.isRedirectModalOpen.set(true);
+  ngAfterViewInit(): void {
+    this.sectionNavigation.setSections(this.sections);
+    this.sectionNavigation.startTracking();
   }
 
-  closeRedirectModal(): void {
-    this.isRedirectModalOpen.set(false);
+  ngOnDestroy(): void {
+    this.sectionNavigation.stopTracking();
+  }
+
+  openProjectId = signal<number | null>(null);
+
+  toggleAccordion(projectId: number): void {
+    this.openProjectId.update((current) =>
+      current === projectId ? null : projectId
+    );
+  }
+
+  isAccordionOpen(projectId: number): boolean {
+    return this.openProjectId() === projectId;
   }
 
   async copyNumber() {
@@ -81,4 +150,5 @@ export class Dashboard {
     this.emailCopied.set(true);
     setTimeout(() => this.emailCopied.set(false), 2000);
   }
+
 }

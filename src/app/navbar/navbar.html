@@ -1,1 +1,47 @@
-<p>navbar works!</p>
+<div class="nav-space">
+    <nav class="nav-container" [class.scrolled]="isScrolled">
+        <div class="left-side">
+            @for (section of sections; track $index) {
+                <button
+                    type="button"
+                    class="btn-nav"
+                    [class.active]="activeSection() === section.id"
+                    [attr.aria-label]="section.label"
+                    (click)="scrollTo(section.id)"
+                >
+                    <span>{{ section.label | translate }}</span>
+                </button>
+            }
+        </div>
+        <div class="right-side">
+            <div class="lang-toggler">
+                <button 
+                    type="button" 
+                    [class.active]="activeLanguage() === 'en'"
+                    (click)="switchLanguage('en')"
+                >
+                    EN
+                </button>
+                <button 
+                    type="button"
+                    [class.active]="activeLanguage() === 'it'"
+                    (click)="switchLanguage('it')"
+                >
+                    IT
+                </button>
+            </div>
+        </div>
+        <button 
+            type="button" 
+            class="btn-burger"
+            (click)="openSlideNavbar()"
+        >
+            <i class="bi bi-list"></i>
+        </button>
+    </nav>
+</div>
+<app-slide-navbar 
+    [sections]="sections"
+    [open]="isSlideNavbarOpen()"
+    (closed)="closeSlideNavbar()"
+/>

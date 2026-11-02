@@ -1,0 +1,43 @@
+<div class="slide-navbar-backdrop" [class.visible]="open()" (click)="close()"></div>
+
+<nav class="slide-navbar" [class.open]="open()">
+    <button 
+        type="button" 
+        class="close-button" 
+        (click)="closed.emit()"
+    >
+        ✕
+    </button>
+
+    <ul>
+        @for (section of sections; track section.id) {
+        <li>
+            <button 
+                type="button"
+                class="btn-section"
+                [class.active]="activeSection() === section.id"
+                (click)="scrollToAndClose(section.id)"
+            >
+                {{ section.label | translate }}
+            </button>
+        </li>
+        }
+    </ul>
+
+    <div class="lang-toggler">
+        <button 
+            type="button" 
+            [class.active]="activeLanguage() === 'en'"
+            (click)="switchLanguage('en')"
+        >
+            EN
+        </button>
+        <button 
+            type="button"
+            [class.active]="activeLanguage() === 'it'"
+            (click)="switchLanguage('it')"
+        >
+            IT
+        </button>
+    </div>
+</nav>

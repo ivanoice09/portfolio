@@ -1,0 +1,33 @@
+{
+    "headers": {
+        "about": "About",
+        "projects": "Projects",
+        "contacts": "Contacts"
+    },
+    "intro": {
+        "subtitle1": "Hi, I’m Ivan Sion, a full-stack web developer based in Milan.",
+        "subtitle2": "I enjoy building user-friendly applications with clean, maintainable code and thoughtful UI design.",
+        "subtitle3": "I’m looking for opportunities to contribute to meaningful products while continuing to grow as a developer."
+    },
+    "description": {
+        "proj1": "A web application that simplifies employee shift scheduling. Managers and admins can create and assign shifts efficiently, while employees can easily view their schedules.",
+        "proj2": "An e-commerce website for bicycles, built as a training project during my course at Betacom Srl. It was my first experience with Angular and helped me develop a strong foundation in ASP.NET Core.",
+        "proj3": "Music Player is my first single-page application, developed with guidance from senior developers at Selexi Srl. Inspired by Spotify, it helped me build a foundation in full-stack development while focusing on user experience and clean, well-structured code.",
+        "proj4": "SplitFive is an Android expense-splitting application developed as a final group project during my one-year course at ITS Angelo Rizzoli. Working outside my usual skill set taught me to adapt to client requirements, meet deadlines, and collaborate effectively within a team."
+    },
+    "sub-headers": {
+        "description": "Description",
+        "tech-stack": "Tech stack",
+        "documentation": "Documentation"
+    },
+    "doc-type": {
+        "docs": "Details",
+        "src-code": "Source code",
+        "src-code-be": "Backend source code",
+        "src-code-fe": "Frontend source code",
+        "wireframe": "Wireframe"
+    },
+    "demo-button": {
+        "link": "View site"
+    }
+}

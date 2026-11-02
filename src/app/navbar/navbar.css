@@ -1,0 +1,136 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+
+  transition:
+    top 0.2s ease,
+    width 0.2s ease,
+    margin-left 0.2s ease,
+    border-radius 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+:host(.scrolled) {
+  top: 10px;
+  width: calc(100% - 20px);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+  border-radius: 16px;
+}
+
+.nav-space {
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 5rem;
+  justify-content: space-between;
+
+  background: var(--surface);
+  border-radius: inherit;
+
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+:host(.scrolled) .nav-container {
+  border-radius: 8px;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  gap: 16px;
+}
+
+.left-side {
+  position: relative;
+}
+
+.lang-toggler {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-nav,
+.lang-toggler button  {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 0.5rem;
+
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.lang-toggler button {
+  font-size: 20px;
+}
+
+.lang-toggler button:hover,
+.btn-nav:hover {
+  background-color: var(--surface-2);
+}
+
+.lang-toggler button.active,
+.btn-nav.active {
+  border-color: var(--surface-2);
+}
+
+.btn-burger {
+  display: none;
+  align-self: center;
+  margin: 0.3rem 0.3rem 0 0;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--surface);
+  border: none;
+  border-radius: 50px;
+}
+
+@media (max-width: 640px) {
+  .left-side, 
+  .right-side {
+    display: none;
+  }
+
+  :host {
+    top: 0.1rem;
+    margin-right: 2px;
+  }
+
+  :host(.scrolled) {
+    box-shadow: none;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: end;
+    background: none;
+    box-shadow: none;
+    min-height: 0;
+  }
+
+  .btn-burger {
+    display: block;
+    background-color: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 4px 7px rgb(0 0 0 / 15%);
+  }
+
+  .btn-burger i {
+    font-size: 2rem;
+    color: var(--text);
+  }
+}
